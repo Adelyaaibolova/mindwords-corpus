@@ -36,12 +36,12 @@
           "source": "kati_2.csv"
         },
         {
-          "text": "I've been dealing with serious anxiety for a while.",
+          "text": "Anxiety isn't an enemy or a demon.",
           "source": "out__15_.csv"
         },
         {
-          "text": "Social anxiety, depression are my diagnosis basically.",
-          "source": "KATI_3.csv"
+          "text": "Trickledown anxiety is real!",
+          "source": "dr_paul.csv"
         },
         {
           "text": "Then I started on the anxiety meds which only made my anxiety 10 times worse.",
@@ -58,7 +58,7 @@
         "constant anxiety",
         "anxiety meds"
       ],
-      "note": "Very often the head of a noun compound: social, separation, job, death anxiety, and the creative coinage trickle-down anxiety. It is usually listed together with depression. A counter-narrative also appears in the corpus: anxiety is not an enemy, it is a signal.",
+      "note": "Very often the head of a noun compound: social, separation, job, death, shame anxiety, and the creative coinage trickledown anxiety (one person's anxiety spilling over onto another). It is usually listed together with depression. A counter-narrative also appears: anxiety isn't an enemy, it is like an overprotective friend.",
       "translations": {
         "ar": {
           "word": "القلق",
@@ -196,19 +196,19 @@
           "source": "Jonathan_Bricke.csv"
         },
         {
+          "text": "Discipline really is the gateway.",
+          "source": "grindbuddy.csv"
+        },
+        {
+          "text": "Then tomorrow it snowballed and you build discipline as if a muscle.",
+          "source": "Jonathan_Bricke.csv"
+        },
+        {
           "text": "Start with the little disciplines because those will lead to the big ones.",
           "source": "grindbuddy.csv"
         },
         {
           "text": "Discipline isn't a sacrifice, it is an enrichment.",
-          "source": "Jonathan_Bricke.csv"
-        },
-        {
-          "text": "Please first have the discipline to do what you planned.",
-          "source": "out__15_.csv"
-        },
-        {
-          "text": "I have lacked self discipline for a very long time.",
           "source": "Jonathan_Bricke.csv"
         }
       ],
@@ -221,7 +221,7 @@
         "discipline and training",
         "be disciplined"
       ],
-      "note": "Strongly metaphorical: discipline is a gateway, an engine, freedom, and a discipline muscle you train. In general web English (English Web 2021) the word is institutional instead: academic or strict discipline that is imposed or enforced.",
+      "note": "Strongly metaphorical: discipline is the gateway, discipline is freedom, and something you build like a muscle, starting with little disciplines. In general web English (English Web 2021) the word is institutional instead: academic or strict discipline that is imposed or enforced.",
       "translations": {
         "ar": {
           "word": "الانضباط",

@@ -40,6 +40,7 @@ The page keeps the design made in the project ([`dictionary/template.html`](dict
 
 ```bash
 python scripts/build_dictionary.py   # entries.json + template.html -> docs/index.html
+python scripts/build_dictionary.py --verify data/raw/corpus_clean.csv   # fails if an example is not in the corpus
 ```
 
 When the repository was prepared, the examples and word groups were checked against the corpus. Most examples on the original page could not be found verbatim in the comments, so they were replaced: every example now occurs word for word in the cleaned corpus (shown with the video it comes from), and every word group is attested there. Examples from spam comments (e.g. ads for self-help books mentioning *self-worth* or *mindset*) were excluded. Definitions are written for the dictionary and linked to the reference dictionary they were checked against; translations link to Almaany, DWDS/Duden, Le Robert and RAE.

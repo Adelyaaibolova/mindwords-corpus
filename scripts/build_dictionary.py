@@ -10,10 +10,12 @@ The data is written into the template, so the result is one static HTML file tha
 works on GitHub Pages and when opened from disk. Edit entries.json, then run:
 
     python scripts/build_dictionary.py
+    python scripts/build_dictionary.py --verify data/raw/corpus_clean.csv   # check every example
 """
 
 from __future__ import annotations
 
+import argparse
 import csv
 import json
 from pathlib import Path
@@ -30,8 +32,32 @@ def js_json(obj) -> str:
     return json.dumps(obj, ensure_ascii=False).replace("</", "<\\/")
 
 
+def verify(data: dict, corpus_csv: Path) -> None:
+    """Fail if an example does not occur verbatim under its source video in the corpus."""
+    import pandas as pd
+
+    df = pd.read_csv(corpus_csv, usecols=["comment", "source_file"])
+    df["comment"] = df["comment"].astype(str)
+    bad = []
+    for e in data["entries"]:
+        for x in e["examples"]:
+            texts = df.loc[df["source_file"] == x["source"], "comment"]
+            if not texts.str.contains(x["text"], regex=False).any():
+                bad.append(f'{e["id"]}: "{x["text"][:60]}" ({x["source"]})')
+    if bad:
+        raise SystemExit("examples not found in the corpus:\n  " + "\n  ".join(bad))
+    n = sum(len(e["examples"]) for e in data["entries"])
+    print(f"all {n} examples found verbatim in {corpus_csv}")
+
+
 def main() -> None:
+    p = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    p.add_argument("--verify", type=Path, metavar="CORPUS_CSV", help="check examples against the cleaned corpus")
+    args = p.parse_args()
+
     data = json.loads(ENTRIES.read_text(encoding="utf-8"))
+    if args.verify:
+        verify(data, args.verify)
     with VIDEOS.open(encoding="utf-8") as fh:
         sources = {r["source_file"]: r["creator"] for r in csv.DictReader(fh)}
 

@@ -6,6 +6,8 @@ Adelya Aibolova · Souhaila Derbal · Salah Eddine Nacer Benkhemis — Mai 2026
 
 > Bereinigte Textfassung des eingereichten Berichts. Screenshots aus Sketch Engine, CQPweb und Google Colab sind hier nicht enthalten; die zugehörigen Befunde sind im Text beschrieben. Das Wörterbuch selbst ist unter https://adelyaaibolova.github.io/mindwords-corpus/ abrufbar (Daten: [`dictionary/entries.json`](../dictionary/entries.json)).
 
+> **Hinweis zur Repository-Fassung (Oktober 2026).** Bei der Vorbereitung des Repositorys wurden die zitierten Belege gegen das bereinigte Gesamtkorpus (71.932 Kommentare, [`scripts/clean_comments.py`](../scripts/clean_comments.py)) geprüft. Bestätigt sind u. a. *discipline really is the gateway*, *discipline is freedom*, *build discipline as if a muscle*, *trickledown anxiety*, *separation/job/death/shame anxiety*, *Anxiety isn't an enemy or a demon* sowie die *empathy*-Belege aus Abschnitt 3.5. Wo ein Beleg im Bericht nur sinngemäß wiedergegeben war, steht hier der wörtliche Korpusbeleg; nicht belegbare Angaben sind im Text markiert. Die Beispielsätze der Wörterbucheinträge wurden durch wörtliche Korpusbelege ersetzt.
+
 ---
 
 ## 1. Forschungsziel, Forschungsfrage und Wörterbuchdesign
@@ -97,7 +99,7 @@ Die CQP-Abfrage `[pos="N.*"][word="anxiety"]` sucht nach allen Nomen, die unmitt
 
 Die Abfrage bestätigte die Hypothese, dass *anxiety* im Korpus kaum allein steht, sondern häufig als Kopf einer Nominalkomposition fungiert. Identifizierte Komposita: *separation anxiety, trickle-down anxiety, job anxiety, shame anxiety, depression anxiety, death anxiety, functioning anxiety, level anxiety, attention anxiety*.
 
-Besonders auffällig ist *trickle-down anxiety*: ein kreativer Neologismus, der einen Begriff aus dem Wirtschaftsdiskurs auf psychologischen Stress überträgt. Diese Abfrage war für den Wörterbucheintrag *anxiety* direkt verwertbar: Die Kompositastrukturen bilden die Grundlage der Kollokationsliste.
+Besonders auffällig ist *trickle-down anxiety* (im Korpus: *Trickledown anxiety is real!*): ein kreativer Neologismus, der einen Begriff aus dem Wirtschaftsdiskurs auf psychologischen Stress überträgt. Diese Abfrage war für den Wörterbucheintrag *anxiety* direkt verwertbar: Die Kompositastrukturen bilden die Grundlage der Kollokationsliste.
 
 ### 3.3 Sketch Engine – Word Sketch: *anxiety*
 
@@ -109,9 +111,9 @@ Der Word Sketch für *anxiety* (34 Instanzen als Nomen) zeigt grammatische Kollo
 | Nomen modifiziert | disorder, introversion, self-hate, insomnia, depression, fear, attack | *anxiety disorder* |
 | Verben (Objekt) | lessen, reduce, train, experience, understand, have | *lessen anxiety* |
 | Koordination (and/or) | depression, introversion, self-hate, insomnia, stress, fear | *anxiety and depression* |
-| Prädikativ (is a) | enemy (Gegennarrativ) | *Anxiety is not an enemy* |
+| Prädikativ (is a) | enemy (Gegennarrativ) | *Anxiety isn't an enemy or a demon* |
 
-**Zentraler Befund:** Die Prädikativkonstruktion liefert den Beleg *Anxiety is not an enemy*. Dies stellt ein lexikographisch bedeutsames Gegennarrativ dar: Angst wird nicht als zu bekämpfende Bedrohung, sondern als Signal gedeutet. Dieser Befund ist im Wörterbucheintrag als Gebrauchshinweis vermerkt.
+**Zentraler Befund:** Die Prädikativkonstruktion liefert den Beleg *Anxiety isn't an enemy or a demon. It's like an overprotective friend …* Dies stellt ein lexikographisch bedeutsames Gegennarrativ dar: Angst wird nicht als zu bekämpfende Bedrohung, sondern als schützendes Signal gedeutet. Dieser Befund ist im Wörterbucheintrag als Gebrauchshinweis vermerkt.
 
 ### 3.4 Word Sketch Difference: *anxiety* vs. *healing*
 
@@ -138,16 +140,16 @@ Im Standardenglisch ist *empathy* eine auf andere gerichtete Emotion. Im Korpus 
 
 ### 3.6 Visual Word Sketch: *discipline*
 
-**Einfache Variante (*discipline is a …*):** Die prädikative Konstruktion zeigt drei Nomen: *gateway*, *engine* und *freedom*. Alle drei sind Metaphern:
+**Einfache Variante (*discipline is a …*):** Die prädikative Konstruktion zeigt drei Nomen: *gateway*, *engine* und *freedom*. Alle drei sind Metaphern (Korpusbelege: *Discipline really is the gateway.* / *Discipline is freedom.*):
 
 - *gateway*: Disziplin als instrumenteller Zugang zu etwas Besserem – Erfolg, Freiheit
-- *engine*: Disziplin als treibende Kraft des Fortschritts – eine mechanische Metapher
+- *engine*: Disziplin als treibende Kraft des Fortschritts – eine mechanische Metapher *(im bereinigten Gesamtkorpus nicht wörtlich belegt)*
 - *freedom*: Paradoxon – Disziplin als Befreiung statt Einschränkung. Diese Formulierung ist aus dem Self-Improvement-Diskurs bekannt, u. a. popularisiert durch Jocko Willink.
 
 **Vollständige Variante:**
 
 - Modifikatoren: *little* und *small* (häufigste), *daily, conscious, sacrifice, growth*
-- Nomen, die *discipline* modifiziert: *mindset, training, progress, culture, work, muscle* – besonders auffällig: *discipline muscle* als physische Metapher
+- Nomen, die *discipline* modifiziert: *mindset, training, progress, culture, work, muscle* – besonders auffällig: Disziplin als Muskel, eine physische Metapher (*you build discipline as if a muscle*; *start with little disciplines, as they build the muscle for handling bigger challenges*)
 - Koordination (and/or): *mindset, responsibility, self-motivation, sacrifice, progress, growth*
 - Verben (als Objekt): *have, develop, be* – Disziplin gilt als erwerbbar
 
@@ -167,7 +169,7 @@ Das Präfix *self-* erweist sich als morphologisch hochproduktiv: *self-educatio
 
 Der Thesaurus für *mindset* (499.315 Instanzen) identifiziert als nächste Synonyme: *attitude, mentality, thinking, confidence, lifestyle, habit, ambition, paradigm, worldview, creativity, ideology, ethic, ethos, aspiration, viewpoint*. Diese Synonymliste ermöglicht im Wörterbucheintrag die Abgrenzung von nahe verwandten Begriffen.
 
-**Discipline im Referenzkorpus.** Im Referenzkorpus erscheint *discipline* mit 1.732.976 Instanzen. Modifikatoren: *academic, engineering, scientific, fiscal, strict, spiritual, church, STEM*. Verben: *instill, impose, enforce, exercise, maintain, practice, lack* – formal und hierarchisch. Im eigenen Korpus hingegen dominieren *discipline muscle, daily discipline, discipline is freedom* – ein völlig anderes, persönliches Ermächtigungsregister. Dieser Kontrast bestätigt den domänenspezifischen Charakter des eigenen Korpus eindrücklich.
+**Discipline im Referenzkorpus.** Im Referenzkorpus erscheint *discipline* mit 1.732.976 Instanzen. Modifikatoren: *academic, engineering, scientific, fiscal, strict, spiritual, church, STEM*. Verben: *instill, impose, enforce, exercise, maintain, practice, lack* – formal und hierarchisch. Im eigenen Korpus hingegen dominieren Muster wie *build discipline as if a muscle, little/daily disciplines, discipline is freedom* – ein völlig anderes, persönliches Ermächtigungsregister. Dieser Kontrast bestätigt den domänenspezifischen Charakter des eigenen Korpus eindrücklich.
 
 ## 4. Such-Historie
 
@@ -226,7 +228,7 @@ Das Korpus und die Analysewerkzeuge haben gemeinsam ausreichend Material für vo
 **Sketch Engine** war das produktivste Werkzeug insgesamt:
 
 - *Word Sketch*: vollständiges grammatisches Kollokationsprofil in einer Ansicht – direkt für Eintragskollokatoren verwertbar
-- *Visual Word Sketch*: ermöglichte die Identifikation metaphorischer Konzeptualisierungen (*discipline* als gateway/engine/freedom)
+- *Visual Word Sketch*: ermöglichte die Identifikation metaphorischer Konzeptualisierungen (*discipline* als gateway/freedom/Muskel)
 - *GDEX-sortierte Konkordanz*: lieferte die besten Beispielsätze für die Einträge
 - *Word Sketch Difference*: wertvoller Kontrast zwischen *anxiety* und *healing*
 - *Keyword-Liste*: effizienter Ausgangspunkt für alle gezielten Abfragen
