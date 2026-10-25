@@ -8,18 +8,19 @@
 | `derived/source_stats.csv` | comments, top-level vs replies, tokens, likes and date range per source file |
 | `derived/word_frequencies.csv` | top 2,000 word forms (lower-cased, deduplicated corpus) with counts and per-million |
 | `derived/headword_by_source.csv` | frequency of the 11 dictionary headwords per source file |
-| `derived/duplicates.csv` | source files that share comments |
+| `derived/cleaning_log.csv` | what each cleaning step changed or removed |
+| `derived/repeated_texts.csv` | template replies and spam removed as repeats: normalised first 80 characters and number of occurrences per video |
 | `derived/figures/` | charts used in the main README |
 
 All derived files are regenerated with:
 
 ```bash
-python scripts/corpus_stats.py data/raw/combined_filtered.csv --out data/derived
+python scripts/corpus_stats.py data/raw/corpus_clean.csv --out data/derived
 ```
 
 ## Not included: `raw/`
 
-`raw/` holds the per-video CSVs and `combined_filtered.csv` on your own machine and is git-ignored. Comment texts are user-generated content collected through the YouTube Data API; its Terms of Service restrict storing and redistributing that data, so the texts are not published. Rebuild them with the scripts (see the main README).
+`raw/` holds the per-video CSVs, `combined_filtered.csv` and `corpus_clean.csv` on your own machine and is git-ignored. Comment texts are user-generated content collected through the YouTube Data API; its Terms of Service restrict storing and redistributing that data, so the texts are not published. Rebuild them with the scripts (see the main README).
 
 ### Schema of `combined_filtered.csv`
 

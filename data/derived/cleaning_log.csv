@@ -1,0 +1,13 @@
+step,kind,affected,rows_left,note
+input,rows,79646,79646,
+html,text changed,9180,79646,
+invisible,text changed,1109,79646,
+urls,text changed,159,79646,
+timestamps,text changed,1016,79646,
+mentions,text changed,5101,79646,
+timestamps_after_mentions,text changed,0,79646,
+whitespace,text changed,8077,79646,
+no_letters,rows dropped,1871,77775,
+duplicate_source,rows dropped,3865,73910,Huberman_Lab.csv = dr_paul.csv
+duplicate_comment,rows dropped,376,73534,
+repeated_text,rows dropped,1602,71932,">= 5 times, first kept"

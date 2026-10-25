@@ -7,7 +7,7 @@ Definitions below are short paraphrases. In the dictionary itself they were chec
 ---
 
 ## anxiety
-*noun* · domain: **Emotional States** · ~396 per million tokens in the full deduplicated comment set
+*noun* · domain: **Emotional States** · ~426 per million tokens in the cleaned comment corpus
 
 **Definition.** A feeling of nervousness or worry about something happening now or that might happen later. In the comments it is mostly talked about as a clinical, nameable condition people *have*, *experience* or try to *reduce*.
 
@@ -30,7 +30,7 @@ Definitions below are short paraphrases. In the dictionary itself they were chec
 ---
 
 ## discipline
-*noun* · domain: **Self-Improvement** · ~76 per million tokens
+*noun* · domain: **Self-Improvement** · ~83 per million tokens
 
 **Definition.** The ability to control your own behaviour and keep doing what you planned, built up through regular practice. In general English the word leans toward rules, training and punishment imposed by others; in this corpus it is almost always **self**-discipline.
 
@@ -51,7 +51,7 @@ Definitions below are short paraphrases. In the dictionary itself they were chec
 ---
 
 ## mindset
-*noun* · domain: **Self-Improvement** · ~126 per million tokens
+*noun* · domain: **Self-Improvement** · ~131 per million tokens
 
 **Definition.** A person's habitual way of thinking and the attitudes that come with it.
 
@@ -80,4 +80,4 @@ Definitions below are short paraphrases. In the dictionary itself they were chec
 | Struggle and Recovery | healing, self-worth |
 | Advice and Reflection | mindfulness, self-motivation |
 
-Per-million figures are computed by [`scripts/corpus_stats.py`](../scripts/corpus_stats.py) over all 14 source files (deduplicated), counting all inflected forms; they differ from the Sketch Engine figures in the report, which refer to the two-video subcorpus.
+Per-million figures are computed by [`scripts/corpus_stats.py`](../scripts/corpus_stats.py) over the cleaned corpus (13 videos), counting all inflected forms; they differ from the Sketch Engine figures in the report, which refer to the two-video subcorpus.

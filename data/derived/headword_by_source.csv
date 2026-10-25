@@ -1,61 +1,50 @@
 headword,source_file,hits,per_million
-anxiety,COWBOY.csv,71,218.83
-overthinking,COWBOY.csv,15,46.23
-discipline,COWBOY.csv,21,64.73
-mindset,COWBOY.csv,22,67.81
+anxiety,COWBOY.csv,71,219.63
+overthinking,COWBOY.csv,15,46.4
+discipline,COWBOY.csv,21,64.96
+mindset,COWBOY.csv,22,68.05
 self-education,COWBOY.csv,0,0.0
-empathy,COWBOY.csv,6,18.49
-healing,COWBOY.csv,46,141.78
-self-worth,COWBOY.csv,5,15.41
+empathy,COWBOY.csv,6,18.56
+healing,COWBOY.csv,46,142.29
+self-worth,COWBOY.csv,5,15.47
 mindfulness,COWBOY.csv,0,0.0
-self-motivation,COWBOY.csv,1,3.08
-you are not alone,COWBOY.csv,13,40.07
-anxiety,Huberman_Lab.csv,47,355.4
-overthinking,Huberman_Lab.csv,3,22.69
-discipline,Huberman_Lab.csv,14,105.86
-mindset,Huberman_Lab.csv,14,105.86
-self-education,Huberman_Lab.csv,0,0.0
-empathy,Huberman_Lab.csv,19,143.67
-healing,Huberman_Lab.csv,47,355.4
-self-worth,Huberman_Lab.csv,1,7.56
-mindfulness,Huberman_Lab.csv,9,68.06
-self-motivation,Huberman_Lab.csv,0,0.0
-you are not alone,Huberman_Lab.csv,2,15.12
-anxiety,JORDAN_2.csv,11,200.89
-overthinking,JORDAN_2.csv,1,18.26
-discipline,JORDAN_2.csv,11,200.89
-mindset,JORDAN_2.csv,18,328.74
+self-motivation,COWBOY.csv,1,3.09
+you are not alone,COWBOY.csv,13,40.21
+anxiety,JORDAN_2.csv,11,202.06
+overthinking,JORDAN_2.csv,1,18.37
+discipline,JORDAN_2.csv,11,202.06
+mindset,JORDAN_2.csv,18,330.65
 self-education,JORDAN_2.csv,0,0.0
-empathy,JORDAN_2.csv,6,109.58
-healing,JORDAN_2.csv,25,456.58
+empathy,JORDAN_2.csv,6,110.22
+healing,JORDAN_2.csv,25,459.24
 self-worth,JORDAN_2.csv,0,0.0
-mindfulness,JORDAN_2.csv,3,54.79
+mindfulness,JORDAN_2.csv,3,55.11
 self-motivation,JORDAN_2.csv,0,0.0
-you are not alone,JORDAN_2.csv,5,91.32
-anxiety,Jonathan_Bricke.csv,22,363.2
-overthinking,Jonathan_Bricke.csv,2,33.02
-discipline,Jonathan_Bricke.csv,34,561.31
-mindset,Jonathan_Bricke.csv,9,148.58
+you are not alone,JORDAN_2.csv,5,91.85
+anxiety,Jonathan_Bricke.csv,22,364.32
+overthinking,Jonathan_Bricke.csv,2,33.12
+discipline,Jonathan_Bricke.csv,34,563.04
+mindset,Jonathan_Bricke.csv,9,149.04
 self-education,Jonathan_Bricke.csv,0,0.0
-empathy,Jonathan_Bricke.csv,1,16.51
-healing,Jonathan_Bricke.csv,14,231.13
-self-worth,Jonathan_Bricke.csv,1,16.51
-mindfulness,Jonathan_Bricke.csv,68,1122.61
-self-motivation,Jonathan_Bricke.csv,1,16.51
-you are not alone,Jonathan_Bricke.csv,2,33.02
-anxiety,KATI_3.csv,166,467.32
-overthinking,KATI_3.csv,4,11.26
-discipline,KATI_3.csv,9,25.34
-mindset,KATI_3.csv,15,42.23
+empathy,Jonathan_Bricke.csv,1,16.56
+healing,Jonathan_Bricke.csv,14,231.84
+self-worth,Jonathan_Bricke.csv,1,16.56
+mindfulness,Jonathan_Bricke.csv,68,1126.09
+self-motivation,Jonathan_Bricke.csv,1,16.56
+you are not alone,Jonathan_Bricke.csv,2,33.12
+anxiety,KATI_3.csv,166,468.65
+overthinking,KATI_3.csv,4,11.29
+discipline,KATI_3.csv,9,25.41
+mindset,KATI_3.csv,15,42.35
 self-education,KATI_3.csv,0,0.0
-empathy,KATI_3.csv,45,126.68
-healing,KATI_3.csv,349,982.49
-self-worth,KATI_3.csv,15,42.23
-mindfulness,KATI_3.csv,2,5.63
+empathy,KATI_3.csv,45,127.04
+healing,KATI_3.csv,349,985.29
+self-worth,KATI_3.csv,15,42.35
+mindfulness,KATI_3.csv,2,5.65
 self-motivation,KATI_3.csv,0,0.0
-you are not alone,KATI_3.csv,43,121.05
-anxiety,OXFORD.csv,1,90.55
-overthinking,OXFORD.csv,1,90.55
+you are not alone,KATI_3.csv,43,121.4
+anxiety,OXFORD.csv,1,91.27
+overthinking,OXFORD.csv,1,91.27
 discipline,OXFORD.csv,0,0.0
 mindset,OXFORD.csv,0,0.0
 self-education,OXFORD.csv,0,0.0
@@ -65,80 +54,91 @@ self-worth,OXFORD.csv,0,0.0
 mindfulness,OXFORD.csv,0,0.0
 self-motivation,OXFORD.csv,0,0.0
 you are not alone,OXFORD.csv,0,0.0
-anxiety,grindbuddy.csv,8,89.38
-overthinking,grindbuddy.csv,3,33.52
-discipline,grindbuddy.csv,46,513.96
-mindset,grindbuddy.csv,77,860.33
-self-education,grindbuddy.csv,23,256.98
-empathy,grindbuddy.csv,1,11.17
-healing,grindbuddy.csv,15,167.6
-self-worth,grindbuddy.csv,13,145.25
+anxiety,dr_paul.csv,47,356.58
+overthinking,dr_paul.csv,3,22.76
+discipline,dr_paul.csv,14,106.22
+mindset,dr_paul.csv,14,106.22
+self-education,dr_paul.csv,0,0.0
+empathy,dr_paul.csv,19,144.15
+healing,dr_paul.csv,47,356.58
+self-worth,dr_paul.csv,1,7.59
+mindfulness,dr_paul.csv,9,68.28
+self-motivation,dr_paul.csv,0,0.0
+you are not alone,dr_paul.csv,2,15.17
+anxiety,grindbuddy.csv,8,95.47
+overthinking,grindbuddy.csv,3,35.8
+discipline,grindbuddy.csv,46,548.95
+mindset,grindbuddy.csv,70,835.36
+self-education,grindbuddy.csv,23,274.48
+empathy,grindbuddy.csv,1,11.93
+healing,grindbuddy.csv,15,179.01
+self-worth,grindbuddy.csv,13,155.14
 mindfulness,grindbuddy.csv,0,0.0
-self-motivation,grindbuddy.csv,17,189.94
-you are not alone,grindbuddy.csv,2,22.35
-anxiety,joe.csv,34,355.68
-overthinking,joe.csv,3,31.38
-discipline,joe.csv,5,52.31
-mindset,joe.csv,62,648.6
+self-motivation,grindbuddy.csv,17,202.87
+you are not alone,grindbuddy.csv,2,23.87
+anxiety,joe.csv,34,372.12
+overthinking,joe.csv,3,32.83
+discipline,joe.csv,5,54.72
+mindset,joe.csv,57,623.85
 self-education,joe.csv,0,0.0
-empathy,joe.csv,2,20.92
-healing,joe.csv,47,491.68
-self-worth,joe.csv,1,10.46
-mindfulness,joe.csv,2,20.92
+empathy,joe.csv,2,21.89
+healing,joe.csv,47,514.4
+self-worth,joe.csv,1,10.94
+mindfulness,joe.csv,2,21.89
 self-motivation,joe.csv,0,0.0
-you are not alone,joe.csv,2,20.92
-anxiety,jordan.csv,5,16.35
-overthinking,jordan.csv,1,3.27
-discipline,jordan.csv,2,6.54
-mindset,jordan.csv,16,52.32
+you are not alone,joe.csv,2,21.89
+anxiety,jordan.csv,5,16.42
+overthinking,jordan.csv,1,3.28
+discipline,jordan.csv,2,6.57
+mindset,jordan.csv,16,52.56
 self-education,jordan.csv,0,0.0
-empathy,jordan.csv,20,65.4
-healing,jordan.csv,128,418.59
+empathy,jordan.csv,20,65.7
+healing,jordan.csv,128,420.48
 self-worth,jordan.csv,0,0.0
-mindfulness,jordan.csv,1,3.27
+mindfulness,jordan.csv,1,3.28
 self-motivation,jordan.csv,0,0.0
-you are not alone,jordan.csv,2,6.54
-anxiety,kati.csv,63,302.01
-overthinking,kati.csv,5,23.97
-discipline,kati.csv,4,19.18
-mindset,kati.csv,6,28.76
+you are not alone,jordan.csv,2,6.57
+anxiety,kati.csv,63,302.78
+overthinking,kati.csv,5,24.03
+discipline,kati.csv,4,19.22
+mindset,kati.csv,6,28.84
 self-education,kati.csv,0,0.0
-empathy,kati.csv,450,2157.24
-healing,kati.csv,72,345.16
-self-worth,kati.csv,10,47.94
-mindfulness,kati.csv,5,23.97
+empathy,kati.csv,450,2162.74
+healing,kati.csv,72,346.04
+self-worth,kati.csv,10,48.06
+mindfulness,kati.csv,5,24.03
 self-motivation,kati.csv,0,0.0
-you are not alone,kati.csv,1,4.79
-anxiety,kati_2.csv,468,1332.4
-overthinking,kati_2.csv,26,74.02
-discipline,kati_2.csv,9,25.62
-mindset,kati_2.csv,22,62.63
+you are not alone,kati.csv,1,4.81
+anxiety,kati_2.csv,462,1319.53
+overthinking,kati_2.csv,26,74.26
+discipline,kati_2.csv,9,25.71
+mindset,kati_2.csv,22,62.83
 self-education,kati_2.csv,0,0.0
-empathy,kati_2.csv,14,39.86
-healing,kati_2.csv,48,136.66
-self-worth,kati_2.csv,1,2.85
-mindfulness,kati_2.csv,14,39.86
+empathy,kati_2.csv,14,39.99
+healing,kati_2.csv,48,137.09
+self-worth,kati_2.csv,1,2.86
+mindfulness,kati_2.csv,14,39.99
 self-motivation,kati_2.csv,0,0.0
-you are not alone,kati_2.csv,29,82.56
-anxiety,liz_csv.csv,17,298.94
-overthinking,liz_csv.csv,12,211.02
-discipline,liz_csv.csv,12,211.02
-mindset,liz_csv.csv,19,334.11
+you are not alone,kati_2.csv,29,82.83
+anxiety,liz_csv.csv,17,299.65
+overthinking,liz_csv.csv,12,211.52
+discipline,liz_csv.csv,12,211.52
+mindset,liz_csv.csv,19,334.9
 self-education,liz_csv.csv,0,0.0
-empathy,liz_csv.csv,1,17.58
-healing,liz_csv.csv,19,334.11
-self-worth,liz_csv.csv,5,87.92
+empathy,liz_csv.csv,1,17.63
+healing,liz_csv.csv,19,334.9
+self-worth,liz_csv.csv,5,88.13
 mindfulness,liz_csv.csv,0,0.0
 self-motivation,liz_csv.csv,0,0.0
-you are not alone,liz_csv.csv,1,17.58
-anxiety,out__15_.csv,27,82.05
-overthinking,out__15_.csv,24,72.93
-discipline,out__15_.csv,14,42.54
-mindset,out__15_.csv,20,60.77
+you are not alone,liz_csv.csv,1,17.63
+anxiety,out__15_.csv,27,164.37
+overthinking,out__15_.csv,24,146.11
+discipline,out__15_.csv,14,85.23
+mindset,out__15_.csv,20,121.75
 self-education,out__15_.csv,0,0.0
-empathy,out__15_.csv,89,270.45
-healing,out__15_.csv,17,51.66
-self-worth,out__15_.csv,12,36.46
-mindfulness,out__15_.csv,6,18.23
-self-motivation,out__15_.csv,2,6.08
-you are not alone,out__15_.csv,4,12.15
+empathy,out__15_.csv,88,535.72
+healing,out__15_.csv,17,103.49
+self-worth,out__15_.csv,12,73.05
+mindfulness,out__15_.csv,6,36.53
+self-motivation,out__15_.csv,2,12.18
+you are not alone,out__15_.csv,4,24.35

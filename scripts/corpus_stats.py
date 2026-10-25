@@ -1,17 +1,16 @@
 """
-Compute descriptive statistics from combined_filtered.csv and write them to
-data/derived/. These files are shareable: they contain counts, not comment texts.
+Compute descriptive statistics from the cleaned corpus (output of clean_comments.py)
+and write them to data/derived/. These files contain counts, not comment texts.
 
 Outputs:
     source_stats.csv         comments, replies, tokens, date range per source file
     word_frequencies.csv     top N word forms (lower-cased) with counts and per-million
     headword_by_source.csv   frequency of the dictionary headwords in each source
-    duplicates.csv           pairs of source files that share comments
     figures/comments_per_source.png
     figures/headwords_per_million.png
 
 Usage:
-    python scripts/corpus_stats.py data/raw/combined_filtered.csv --out data/derived
+    python scripts/corpus_stats.py data/raw/corpus_clean.csv --out data/derived
 """
 
 from __future__ import annotations
@@ -19,7 +18,6 @@ from __future__ import annotations
 import argparse
 import re
 from collections import Counter
-from itertools import combinations
 from pathlib import Path
 
 import pandas as pd
@@ -60,20 +58,6 @@ def main() -> None:
     df["tokens"] = df["comment"].map(tokenize)
     df["n_tokens"] = df["tokens"].map(len)
 
-    # duplicated sources (same comment text, date and time)
-    keyset = {
-        src: set(zip(g["comment"], g["date"], g["time"])) for src, g in df.groupby("source_file")
-    }
-    dup_rows = []
-    for a, b in combinations(sorted(keyset), 2):
-        shared = len(keyset[a] & keyset[b])
-        if shared:
-            dup_rows.append({"source_a": a, "source_b": b, "shared_comments": shared,
-                             "share_of_a": round(shared / len(keyset[a]), 3),
-                             "share_of_b": round(shared / len(keyset[b]), 3)})
-    pd.DataFrame(dup_rows).sort_values("shared_comments", ascending=False).to_csv(
-        args.out / "duplicates.csv", index=False)
-
     # per-source statistics
     stats = df.groupby("source_file").agg(
         comments=("comment", "size"),
@@ -92,7 +76,7 @@ def main() -> None:
     }], index=["TOTAL"])
     pd.concat([stats, total]).rename_axis("source_file").to_csv(args.out / "source_stats.csv")
 
-    # word frequencies (deduplicated corpus)
+    # word frequencies (drop any remaining exact duplicates)
     dedup = df.drop_duplicates(subset=["comment", "date", "time"])
     counts = Counter(tok for toks in dedup["tokens"] for tok in toks)
     n = sum(counts.values())
@@ -132,7 +116,7 @@ def make_figures(stats: pd.DataFrame, hw: pd.DataFrame, dedup: pd.DataFrame, fig
     ax.barh(s.index.str.removesuffix(".csv"), s["top_level"], color="#3B6EA8", label="top-level")
     ax.barh(s.index.str.removesuffix(".csv"), s["replies"], left=s["top_level"], color="#9DB8D9", label="replies")
     ax.set_xlabel("comments")
-    ax.set_title("Comments per source file (combined_filtered.csv)", loc="left")
+    ax.set_title("Comments per source file (cleaned corpus)", loc="left")
     ax.legend(frameon=False, loc="lower right")
     fig.tight_layout()
     fig.savefig(fig_dir / "comments_per_source.png", dpi=150)
@@ -146,7 +130,7 @@ def make_figures(stats: pd.DataFrame, hw: pd.DataFrame, dedup: pd.DataFrame, fig
     for i, v in enumerate(o.values):
         ax.text(v, i, f" {v:.1f}", va="center", fontsize=9)
     ax.set_xlabel("occurrences per million tokens (all forms)")
-    ax.set_title("Dictionary headwords in the full deduplicated corpus", loc="left")
+    ax.set_title("Dictionary headwords in the cleaned corpus (all 13 videos)", loc="left")
     fig.tight_layout()
     fig.savefig(fig_dir / "headwords_per_million.png", dpi=150)
     plt.close(fig)
