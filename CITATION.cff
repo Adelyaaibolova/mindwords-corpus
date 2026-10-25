@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use this corpus pipeline or the MindWords dictionary, please cite it as below."
+title: "MindWords: A Corpus-Based Dictionary of Mental Health Discourse on YouTube"
+type: dataset
+authors:
+  - family-names: Aibolova
+    given-names: Adelya
+  - family-names: Derbal
+    given-names: Souhaila
+  - family-names: Nacer Benkhemis
+    given-names: Salah Eddine
+date-released: 2026-10-25
+repository-code: "https://github.com/Adelyaaibolova/mindwords-corpus"
+keywords:
+  - corpus linguistics
+  - lexicography
+  - YouTube comments
+  - mental health
+  - Sketch Engine
+license: MIT

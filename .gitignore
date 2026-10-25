@@ -1,0 +1,19 @@
+# secrets
+.env
+
+# raw YouTube comment texts are not redistributed (see data/README.md)
+data/raw/*
+!data/raw/.gitkeep
+*.vert
+corpus*.txt
+
+# python / notebooks
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.venv/
+venv/
+
+# OS
+.DS_Store
+Thumbs.db
