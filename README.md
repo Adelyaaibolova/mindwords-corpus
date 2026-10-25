@@ -76,6 +76,7 @@ The function-level behaviour is covered by unit tests in [`tests/`](tests/test_t
 
 - **Creator replies made up half of one video.** Frederik Imbo answered ~1,400 comments with a handful of templates (*"Thank you for both watching my TEDx talk and sending me this kind message…"*). Removing them cuts that video from 344k to 164k tokens. This is the likely reason why *message* and *Fredrick* show up in the report's keyword list.
 - **Spam bots.** Near-identical ads for a manifestation book and an "investment manager" recur in the GrindBuddy and Joe Dispenza comments — which inflates *manifest* and explains the odd keyword *eva*. Recurring texts are listed in [`data/derived/repeated_texts.csv`](data/derived/repeated_texts.csv).
+- **HTML only in replies.** The original collection script ([`scripts/original/colab_collect_comments.py`](scripts/original/colab_collect_comments.py)) asked for plain text for top-level comments but not for replies, so the API returned replies as HTML: all 8,618 comments with `&#39;` or `<br>` are replies. The new [`collect_comments.py`](scripts/collect_comments.py) and the cleaning step handle this.
 - **One video was downloaded twice** (Paul Conti on the Huberman Lab channel, 3,980 comments in two files).
 - **Single videos still dominate some headwords:** e.g. most *empathy/empathic* hits come from one Kati Morton video (*Are You a Narcissist?*). See [`headword_by_source.csv`](data/derived/headword_by_source.csv).
 
@@ -146,7 +147,9 @@ mindwords-corpus/
 │   ├── textclean.py            # cleaning functions
 │   ├── corpus_stats.py         # statistics + figures
 │   ├── build_dictionary.py     # entries.json -> docs/index.html
-│   └── export_sketchengine.py  # Sketch Engine / CQPweb text export
+│   ├── export_sketchengine.py  # Sketch Engine / CQPweb text export
+│   └── original/
+│       └── colab_collect_comments.py   # script used in the project (key removed)
 ├── tests/
 │   └── test_textclean.py
 ├── requirements.txt
