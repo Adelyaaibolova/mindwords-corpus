@@ -60,14 +60,46 @@
       ],
       "note": "Very often the head of a noun compound: social, separation, job, death anxiety, and the creative coinage trickle-down anxiety. It is usually listed together with depression. A counter-narrative also appears in the corpus: anxiety is not an enemy, it is a signal.",
       "translations": {
-        "ar": "قلق",
-        "de": "die Angst, die Ängstlichkeit",
-        "fr": "l'anxiété",
-        "es": "la ansiedad"
+        "ar": {
+          "word": "القلق",
+          "definition": "القَلَقُ: الاضْطِرَابُ، الانْزِعَاجُ، عَدَمُ الاسْتِقْرَارِ النَّفْسِيِّ، إحساسٌ بالضِّيق والحرج، وقد يصاحبه بعضُ الألم.",
+          "source": {
+            "label": "Almaany",
+            "url": "https://www.almaany.com/ar/dict/ar-ar/%D8%A7%D9%84%D9%82%D9%84%D9%82/"
+          }
+        },
+        "de": {
+          "word": "Angstzustand",
+          "definition": "Unkontrollierbares Gefühl der Angst, das physische Störungen (Schwindel, Herzbeklemmung, Ohnmacht u. a.) auslöst.",
+          "source": {
+            "label": "Duden",
+            "url": "https://www.duden.de/rechtschreibung/Angstzustand"
+          }
+        },
+        "fr": {
+          "word": "anxiété",
+          "definition": "État de trouble psychique causé par la crainte d'un danger.",
+          "source": {
+            "label": "Le Robert",
+            "url": "https://dictionnaire.lerobert.com/definition/anxiete"
+          }
+        },
+        "es": {
+          "word": "ansiedad",
+          "definition": "f. Estado de agitación, inquietud o zozobra del ánimo.",
+          "source": {
+            "label": "RAE",
+            "url": "https://dle.rae.es/ansiedad?m=form"
+          }
+        }
       },
       "quote": {
         "text": "You don't have to control your thoughts. You just have to stop letting them control you.",
         "by": "commonly attributed to Dan Millman"
+      },
+      "definition_checked_against": {
+        "label": "Cambridge Dictionary",
+        "url": "https://dictionary.cambridge.org/dictionary/english/anxiety"
       }
     },
     {
@@ -109,14 +141,46 @@
       ],
       "note": "Typically used with always or with an object like everything. The imperative stop overthinking is often quoted as unhelpful advice from others. The informal spelling abt (about) is common after it.",
       "translations": {
-        "ar": "الإفراط في التفكير",
-        "de": "das Grübeln, das Zerdenken",
-        "fr": "la rumination, le fait de trop réfléchir",
-        "es": "pensar demasiado, la rumiación"
+        "ar": {
+          "word": "الإفراط في التفكير",
+          "definition": "التفكير في شيء ما أكثر مما ينبغي، مما يُفضي في الغالب إلى القلق أو شلل القرار.",
+          "source": {
+            "label": "Almaany",
+            "url": "https://www.almaany.com/ar/dict/ar-ar/%D8%A7%D9%84%D8%AA%D9%81%D9%83%D9%8A%D8%B1/"
+          }
+        },
+        "de": {
+          "word": "Überdenken / Grübeln",
+          "definition": "Etwas zu lange oder zu intensiv durchdenken, oft auf eine Art, die Angst bereitet oder Entscheidungen hemmt.",
+          "source": {
+            "label": "DWDS",
+            "url": "https://www.dwds.de/wb/gr%C3%BCbeln"
+          }
+        },
+        "fr": {
+          "word": "surréflexion / rumination",
+          "definition": "Le fait de réfléchir de manière excessive à quelque chose, souvent de façon contre-productive.",
+          "source": {
+            "label": "Le Robert",
+            "url": "https://dictionnaire.lerobert.com/definition/rumination"
+          }
+        },
+        "es": {
+          "word": "darle demasiadas vueltas",
+          "definition": "Pensar demasiado en algo, de forma que genera ansiedad o bloquea la capacidad de actuar.",
+          "source": {
+            "label": "RAE",
+            "url": "https://dle.rae.es/cavilar?m=form"
+          }
+        }
       },
       "quote": {
-        "text": "We suffer more often in imagination than in reality.",
-        "by": "Seneca"
+        "text": "Overthinking is the biggest cause of unhappiness. Keep yourself occupied.",
+        "by": "author unknown"
+      },
+      "definition_checked_against": {
+        "label": "Collins Dictionary",
+        "url": "https://www.collinsdictionary.com/dictionary/english/overthink"
       }
     },
     {
@@ -159,14 +223,46 @@
       ],
       "note": "Strongly metaphorical: discipline is a gateway, an engine, freedom, and a discipline muscle you train. In general web English (English Web 2021) the word is institutional instead: academic or strict discipline that is imposed or enforced.",
       "translations": {
-        "ar": "الانضباط",
-        "de": "die Disziplin",
-        "fr": "la discipline",
-        "es": "la disciplina"
+        "ar": {
+          "word": "الانضباط",
+          "definition": "الانضباط الذَّاتيّ: (علوم النفس) السَّيطرة على الذَّات أو التَّصرُّفات بهدف التَّطوير والتَّحسين الشَّخصيّ.",
+          "source": {
+            "label": "Almaany",
+            "url": "https://www.almaany.com/ar/dict/ar-ar/%D8%A7%D9%84%D8%A7%D9%86%D8%B6%D8%A8%D8%A7%D8%B7/"
+          }
+        },
+        "de": {
+          "word": "Disziplin",
+          "definition": "Ordnung, Zucht, der sich jmd. unterwirft.",
+          "source": {
+            "label": "DWDS",
+            "url": "https://www.dwds.de/wb/Disziplin"
+          }
+        },
+        "fr": {
+          "word": "discipline",
+          "definition": "Règle de conduite que l'on s'impose.",
+          "source": {
+            "label": "Le Robert",
+            "url": "https://dictionnaire.lerobert.com/definition/discipline"
+          }
+        },
+        "es": {
+          "word": "disciplina",
+          "definition": "f. Doctrina, instrucción de una persona, especialmente en lo moral.",
+          "source": {
+            "label": "RAE",
+            "url": "https://dle.rae.es/disciplina?m=form"
+          }
+        }
       },
       "quote": {
         "text": "Discipline is the bridge between goals and accomplishment.",
         "by": "commonly attributed to Jim Rohn"
+      },
+      "definition_checked_against": {
+        "label": "Cambridge Dictionary",
+        "url": "https://dictionary.cambridge.org/dictionary/english/discipline"
       }
     },
     {
@@ -209,14 +305,43 @@
       ],
       "note": "Often pre-modified by a type: victim, positive, growth, or a quoted phrase like the \"I have to be right\" mindset. Close neighbours are attitude, mentality and way of thinking. Watch out: many hits in the GrindBuddy comments come from spam advertising a money-mindset book.",
       "translations": {
-        "ar": "العقلية، طريقة التفكير",
-        "de": "die Denkweise, die Einstellung, das Mindset",
-        "fr": "l'état d'esprit",
-        "es": "la mentalidad"
+        "ar": {
+          "word": "العقلية / طريقة التفكير",
+          "definition": "طريقة الشخص المعتادة في التفكير والنظر إلى الأمور، وما يصاحبها من مواقف واتجاهات.",
+          "source": null
+        },
+        "de": {
+          "word": "Mentalität / Denkweise",
+          "definition": "Gemütsart, Denkweise, Anschauungsweise und Verhaltensweise eines Menschen, einer Menschengruppe oder eines Volkes.",
+          "source": {
+            "label": "DWDS",
+            "url": "https://www.dwds.de/wb/Mentalit%C3%A4t#wb-1"
+          }
+        },
+        "fr": {
+          "word": "état d'esprit / mentalité",
+          "definition": "Ensemble des croyances et habitudes d'esprit d'une collectivité.",
+          "source": {
+            "label": "Le Robert",
+            "url": "https://dictionnaire.lerobert.com/definition/mentalite"
+          }
+        },
+        "es": {
+          "word": "mentalidad",
+          "definition": "Modo de pensar o configuración mental de una persona.",
+          "source": {
+            "label": "RAE",
+            "url": "https://dle.rae.es/mentalidad?m=form"
+          }
+        }
       },
       "quote": {
         "text": "Whether you think you can, or you think you can't — you're right.",
         "by": "commonly attributed to Henry Ford"
+      },
+      "definition_checked_against": {
+        "label": "Cambridge Dictionary",
+        "url": "https://dictionary.cambridge.org/dictionary/english/mindset"
       }
     },
     {
@@ -251,14 +376,46 @@
       ],
       "note": "Rare and concentrated in one video (GrindBuddy, quoting Jim Rohn), so the examples come from a single source. The adjective self-educated is as frequent as the noun. Part of a productive family with self-discipline, self-worth and self-motivation.",
       "translations": {
-        "ar": "التعلّم الذاتي",
-        "de": "die Selbstbildung",
-        "fr": "l'autoformation",
-        "es": "la autoformación, la autoeducación"
+        "ar": {
+          "word": "التعليم الذاتي",
+          "definition": "العملية التي يتعلّم من خلالها الفرد بمجهوده الخاص، دون توجيه رسمي من معلم أو مؤسسة.",
+          "source": {
+            "label": "Almaany",
+            "url": "https://www.almaany.com/ar/dict/ar-ar/%D8%A7%D9%84%D8%AA%D8%B9%D9%84%D9%8A%D9%85/"
+          }
+        },
+        "de": {
+          "word": "Selbstbildung / Autodidaktik",
+          "definition": "Das eigenständige Aneignen von Wissen und Fähigkeiten ohne formalen Unterricht.",
+          "source": {
+            "label": "DWDS",
+            "url": "https://www.dwds.de/wb/Autodidakt"
+          }
+        },
+        "fr": {
+          "word": "autoformation / autodidaxie",
+          "definition": "Apprentissage réalisé par ses propres moyens, sans enseignant ni cadre institutionnel.",
+          "source": {
+            "label": "Le Robert",
+            "url": "https://dictionnaire.lerobert.com/definition/autodidacte"
+          }
+        },
+        "es": {
+          "word": "autoeducación",
+          "definition": "Proceso de aprendizaje que una persona lleva a cabo por sus propios medios, sin instrucción formal.",
+          "source": {
+            "label": "RAE",
+            "url": "https://dle.rae.es/autodidacto?m=form"
+          }
+        }
       },
       "quote": {
-        "text": "Formal education will make you a living; self-education will make you a fortune.",
-        "by": "commonly attributed to Jim Rohn"
+        "text": "The capacity to learn is a gift; the ability to learn is a skill; the willingness to learn is a choice.",
+        "by": "Brian Herbert"
+      },
+      "definition_checked_against": {
+        "label": "Oxford Learner's Dictionary",
+        "url": "https://www.oxfordlearnersdictionaries.com/definition/english/self-educated"
       }
     },
     {
@@ -302,14 +459,46 @@
       ],
       "note": "Two distinct uses. Self-directed: give yourself empathy, close to self-compassion (from the TEDx talk on not taking things personally). Clinical: in the narcissism video it is discussed as something people lack, fake or have in cognitive and emotional forms. Most hits come from that one video.",
       "translations": {
-        "ar": "التعاطف",
-        "de": "die Empathie, das Einfühlungsvermögen",
-        "fr": "l'empathie",
-        "es": "la empatía"
+        "ar": {
+          "word": "التعاطف / المشاركة الوجدانية",
+          "definition": "القدرة على فهم مشاعر الآخرين ومشاركتهم إياها عن طريق تخيّل أنفسنا في مواقفهم.",
+          "source": {
+            "label": "Almaany",
+            "url": "https://www.almaany.com/ar/dict/ar-ar/%D8%A7%D9%84%D8%AA%D8%B9%D8%A7%D8%B7%D9%81/"
+          }
+        },
+        "de": {
+          "word": "Empathie / Einfühlungsvermögen",
+          "definition": "Die Fähigkeit, sich in die Gefühle und die Lage anderer Menschen einzufühlen.",
+          "source": {
+            "label": "DWDS",
+            "url": "https://www.dwds.de/wb/Empathie"
+          }
+        },
+        "fr": {
+          "word": "empathie",
+          "definition": "Faculté intuitive de se mettre à la place d'autrui, de percevoir ce qu'il ressent.",
+          "source": {
+            "label": "Le Robert",
+            "url": "https://dictionnaire.lerobert.com/definition/empathie"
+          }
+        },
+        "es": {
+          "word": "empatía",
+          "definition": "Participación afectiva de una persona en una realidad ajena, especialmente en los sentimientos de otra persona.",
+          "source": {
+            "label": "RAE",
+            "url": "https://dle.rae.es/empat%C3%ADa?m=form"
+          }
+        }
       },
       "quote": {
-        "text": "Be kind, for everyone you meet is fighting a hard battle.",
-        "by": "commonly attributed to Ian Maclaren"
+        "text": "Empathy is about finding echoes of another person in yourself.",
+        "by": "Mohsin Hamid"
+      },
+      "definition_checked_against": {
+        "label": "Cambridge Dictionary",
+        "url": "https://dictionary.cambridge.org/dictionary/english/empathy"
       }
     },
     {
@@ -349,11 +538,50 @@
       ],
       "note": "A reply formula: it usually answers another comment that describes a problem, and often comes with a heart emoji or a second reassurance like you matter. Both you are and you're are common; capitals (NOT ALONE) add emphasis.",
       "translations": {
-        "ar": "لستَ وحدك",
-        "de": "Du bist nicht allein",
-        "fr": "Tu n'es pas seul(e)",
-        "es": "No estás solo/a"
-      }
+        "ar": {
+          "word": "أنتَ / أنتِ لست وحدك",
+          "definition": "عبارة طمأنينة تُعبّر عن التضامن العاطفي وتؤكد أن المشاعر الصعبة مشتركة.",
+          "source": {
+            "label": "Almaany",
+            "url": "https://www.almaany.com/ar/dict/ar-ar/%D9%88%D8%AD%D8%AF/"
+          }
+        },
+        "de": {
+          "word": "Du bist nicht allein",
+          "definition": "Ein häufiger Solidaritätsausdruck zur emotionalen Bestätigung und Beruhigung anderer Menschen.",
+          "source": {
+            "label": "DWDS",
+            "url": "https://www.dwds.de/wb/allein"
+          }
+        },
+        "fr": {
+          "word": "Tu n'es pas seul(e)",
+          "definition": "Expression de réconfort très fréquente, signifiant que l'autre n'est pas seul face à sa détresse.",
+          "source": {
+            "label": "Le Robert",
+            "url": "https://dictionnaire.lerobert.com/definition/seul"
+          }
+        },
+        "es": {
+          "word": "No estás solo/a",
+          "definition": "Frase de apoyo que expresa solidaridad y valida el dolor emocional del interlocutor.",
+          "source": {
+            "label": "RAE",
+            "url": "https://dle.rae.es/solo?m=form"
+          }
+        }
+      },
+      "quote": {
+        "text": "No man is an island entire of itself; every man is a piece of the continent, a part of the main.",
+        "by": "John Donne"
+      },
+      "variations": [
+        "you're not alone",
+        "know (that) you are not alone",
+        "you are not alone in this",
+        "you are NOT ALONE",
+        "you are not alone and you matter"
+      ]
     },
     {
       "id": "healing",
@@ -395,14 +623,46 @@
       ],
       "note": "Abstract and often spiritual, unlike the clinical anxiety. Heal from + a cause (trauma, abuse, a bad relationship) is the most frequent pattern; so healing works as an adjective meaning helpful for recovery.",
       "translations": {
-        "ar": "الشفاء، التعافي",
-        "de": "die Heilung",
-        "fr": "la guérison",
-        "es": "la sanación, la curación"
+        "ar": {
+          "word": "الشفاء / التعافي",
+          "definition": "عملية استعادة العافية الجسدية أو النفسية بعد مرض أو صدمة أو ألم.",
+          "source": {
+            "label": "Almaany",
+            "url": "https://www.almaany.com/ar/dict/ar-ar/%D8%A7%D9%84%D8%B4%D9%81%D8%A7%D8%A1/"
+          }
+        },
+        "de": {
+          "word": "Heilung / Genesung",
+          "definition": "Der Vorgang des Wiedergesundwerdens nach einer Verletzung, Krankheit oder emotionalen Belastung.",
+          "source": {
+            "label": "DWDS",
+            "url": "https://www.dwds.de/wb/Heilung"
+          }
+        },
+        "fr": {
+          "word": "guérison",
+          "definition": "Retour à la santé physique ou psychique après une maladie, une blessure ou une épreuve.",
+          "source": {
+            "label": "Le Robert",
+            "url": "https://dictionnaire.lerobert.com/definition/guerison"
+          }
+        },
+        "es": {
+          "word": "sanación / curación",
+          "definition": "Proceso de recuperación de la salud física o emocional tras una enfermedad, herida o dificultad.",
+          "source": {
+            "label": "RAE",
+            "url": "https://dle.rae.es/sanar?m=form"
+          }
+        }
       },
       "quote": {
         "text": "The wound is the place where the Light enters you.",
         "by": "commonly attributed to Rumi"
+      },
+      "definition_checked_against": {
+        "label": "Cambridge Dictionary",
+        "url": "https://dictionary.cambridge.org/dictionary/english/healing"
       }
     },
     {
@@ -444,14 +704,46 @@
       ],
       "note": "Spelled self-worth and self worth about equally. Often paired with self-esteem, self-love or self-respect. Many raw hits are spam promoting a self-worth book; they are excluded here.",
       "translations": {
-        "ar": "تقدير الذات",
-        "de": "der Selbstwert",
-        "fr": "l'estime de soi, la valeur personnelle",
-        "es": "la autoestima, el valor propio"
+        "ar": {
+          "word": "تقدير الذات / الشعور بالقيمة",
+          "definition": "الشعور بأن للإنسان قيمة حقيقية، وأنه يستحق الاحترام بصرف النظر عن إنجازاته أو آراء الآخرين.",
+          "source": {
+            "label": "Almaany",
+            "url": "https://www.almaany.com/ar/dict/ar-ar/%D8%AA%D9%82%D8%AF%D9%8A%D8%B1/"
+          }
+        },
+        "de": {
+          "word": "Selbstwert / Selbstwertgefühl",
+          "definition": "Das Bewusstsein des eigenen Wertes als Mensch, unabhängig von Leistung oder der Meinung anderer.",
+          "source": {
+            "label": "DWDS",
+            "url": "https://www.dwds.de/wb/Selbstwertgef%C3%BChl"
+          }
+        },
+        "fr": {
+          "word": "valeur de soi / estime de soi",
+          "definition": "Sentiment de sa propre valeur en tant que personne, indépendamment de ses réalisations ou du regard d'autrui.",
+          "source": {
+            "label": "Le Robert",
+            "url": "https://dictionnaire.lerobert.com/definition/estime"
+          }
+        },
+        "es": {
+          "word": "autoestima / valor propio",
+          "definition": "Valoración generalmente positiva de uno mismo, sentimiento de merecer respeto y trato digno.",
+          "source": {
+            "label": "RAE",
+            "url": "https://dle.rae.es/autoestima?m=form"
+          }
+        }
       },
       "quote": {
-        "text": "You alone are enough. You have nothing to prove to anybody.",
-        "by": "commonly attributed to Maya Angelou"
+        "text": "You yourself, as much as anybody in the entire universe, deserve your love and affection.",
+        "by": "Sharon Salzberg"
+      },
+      "definition_checked_against": {
+        "label": "Cambridge Dictionary",
+        "url": "https://dictionary.cambridge.org/dictionary/english/self-worth"
       }
     },
     {
@@ -493,14 +785,46 @@
       ],
       "note": "Mostly comes up when commenters compare a talk's advice to mindfulness, sometimes critically (a repackaging of mindfulness). Be mindful of + noun means pay attention to.",
       "translations": {
-        "ar": "اليقظة الذهنية",
-        "de": "die Achtsamkeit",
-        "fr": "la pleine conscience",
-        "es": "la atención plena"
+        "ar": {
+          "word": "اليقظة الذهنية",
+          "definition": "ممارسة الانتباه الواعي والمتعمد للحظة الحاضرة دون إصدار أحكام على الأفكار أو المشاعر.",
+          "source": {
+            "label": "Almaany",
+            "url": "https://www.almaany.com/ar/dict/ar-ar/%D8%A7%D9%84%D9%8A%D9%82%D8%B8%D8%A9/"
+          }
+        },
+        "de": {
+          "word": "Achtsamkeit",
+          "definition": "Die bewusste, nicht wertende Wahrnehmung des gegenwärtigen Moments mit allen Sinnen.",
+          "source": {
+            "label": "DWDS",
+            "url": "https://www.dwds.de/wb/Achtsamkeit"
+          }
+        },
+        "fr": {
+          "word": "pleine conscience",
+          "definition": "État de conscience atteint en focalisant son attention sur l'instant présent de façon calme et non critique.",
+          "source": {
+            "label": "Le Robert",
+            "url": "https://dictionnaire.lerobert.com/definition/conscience"
+          }
+        },
+        "es": {
+          "word": "atención plena / mindfulness",
+          "definition": "Práctica de prestar atención de manera intencionada al momento presente sin emitir juicios.",
+          "source": {
+            "label": "RAE",
+            "url": "https://dle.rae.es/atenci%C3%B3n?m=form"
+          }
+        }
       },
       "quote": {
-        "text": "Wherever you go, there you are.",
-        "by": "Jon Kabat-Zinn"
+        "text": "Mindfulness isn't difficult. We just need to remember to do it.",
+        "by": "Sharon Salzberg"
+      },
+      "definition_checked_against": {
+        "label": "Cambridge Dictionary",
+        "url": "https://dictionary.cambridge.org/dictionary/english/mindfulness"
       }
     },
     {
@@ -536,14 +860,46 @@
       ],
       "note": "Rare in running text but a keyword of the corpus. It appears in summaries and lists of a talk's lessons, next to discipline and self-education, more than in personal stories.",
       "translations": {
-        "ar": "التحفيز الذاتي",
-        "de": "die Selbstmotivation",
-        "fr": "l'automotivation",
-        "es": "la automotivación"
+        "ar": {
+          "word": "الدافعية الذاتية",
+          "definition": "القدرة على الإقدام على ما يجب فعله دون الحاجة إلى تحفيز خارجي أو ضغط من الآخرين.",
+          "source": {
+            "label": "Almaany",
+            "url": "https://www.almaany.com/ar/dict/ar-ar/%D8%A7%D9%84%D8%AF%D8%A7%D9%81%D8%B9%D9%8A%D8%A9/"
+          }
+        },
+        "de": {
+          "word": "Eigenmotivation / Selbstmotivation",
+          "definition": "Die Fähigkeit, aus eigenem Antrieb heraus tätig zu werden, ohne auf externe Anreize angewiesen zu sein.",
+          "source": {
+            "label": "DWDS",
+            "url": "https://www.dwds.de/wb/Motivation"
+          }
+        },
+        "fr": {
+          "word": "automotivation",
+          "definition": "Capacité à agir par sa propre volonté, sans dépendre d'une incitation ou d'une pression extérieure.",
+          "source": {
+            "label": "Le Robert",
+            "url": "https://dictionnaire.lerobert.com/definition/motivation"
+          }
+        },
+        "es": {
+          "word": "automotivación / motivación propia",
+          "definition": "Capacidad de actuar impulsado por la propia voluntad, sin necesidad de estímulos o presiones externas.",
+          "source": {
+            "label": "RAE",
+            "url": "https://dle.rae.es/motivaci%C3%B3n?m=form"
+          }
+        }
       },
       "quote": {
-        "text": "Motivation is what gets you started. Habit is what keeps you going.",
-        "by": "commonly attributed to Jim Rohn"
+        "text": "The secret of getting ahead is getting started.",
+        "by": "commonly attributed to Mark Twain"
+      },
+      "definition_checked_against": {
+        "label": "Cambridge Dictionary",
+        "url": "https://dictionary.cambridge.org/dictionary/english/self-motivated"
       }
     }
   ]

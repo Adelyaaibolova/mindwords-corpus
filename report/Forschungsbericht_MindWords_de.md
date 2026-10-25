@@ -4,7 +4,7 @@
 
 Adelya Aibolova · Souhaila Derbal · Salah Eddine Nacer Benkhemis — Mai 2026
 
-> Bereinigte Textfassung des eingereichten Berichts. Screenshots aus Sketch Engine, CQPweb und Google Colab sind hier nicht enthalten; die zugehörigen Befunde sind im Text beschrieben. Die Wörterbuchdefinitionen der Mustereinträge sind in [`docs/dictionary_sample_entries.md`](../docs/dictionary_sample_entries.md) zusammengefasst.
+> Bereinigte Textfassung des eingereichten Berichts. Screenshots aus Sketch Engine, CQPweb und Google Colab sind hier nicht enthalten; die zugehörigen Befunde sind im Text beschrieben. Das Wörterbuch selbst ist unter https://adelyaaibolova.github.io/mindwords-corpus/ abrufbar (Daten: [`dictionary/entries.json`](../dictionary/entries.json)).
 
 ---
 
@@ -213,7 +213,7 @@ Definitionen wurden in allen Sprachen mit autoritativen Referenzwörterbüchern 
 
 ### 5.2–5.4 Mustereinträge
 
-Die drei Mustereinträge *anxiety*, *discipline* und *mindset* (Korpusbeispiele, Kollokationen, Übersetzungen, Zitate) sind in [`docs/dictionary_sample_entries.md`](../docs/dictionary_sample_entries.md) dokumentiert.
+Die Einträge, darunter die Mustereinträge *anxiety*, *discipline* und *mindset*, sind im Online-Wörterbuch einsehbar: https://adelyaaibolova.github.io/mindwords-corpus/. *Hinweis zur Repository-Fassung:* Bei der Vorbereitung des Repositorys wurden Korpusbeispiele und Kollokationen gegen das bereinigte Korpus geprüft und durch dort wörtlich belegte Beispiele ersetzt.
 
 ## 6. Bewertung des Ergebnisses
 

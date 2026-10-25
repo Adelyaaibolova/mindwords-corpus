@@ -36,13 +36,13 @@ The full write-up (German) is in [`report/Forschungsbericht_MindWords_de.md`](re
 
 All 11 entries — definition, four or five authentic examples with the video they come from, common word groups, a usage note, translations into Arabic, German, French and Spanish, and most with a quote — are on the [dictionary page](https://adelyaaibolova.github.io/mindwords-corpus/), searchable by headword, word group or translation.
 
-The page is generated from [`dictionary/entries.json`](dictionary/entries.json):
+The page keeps the design made in the project ([`dictionary/template.html`](dictionary/template.html)); the content lives in [`dictionary/entries.json`](dictionary/entries.json):
 
 ```bash
-python scripts/build_dictionary.py   # -> docs/index.html
+python scripts/build_dictionary.py   # entries.json + template.html -> docs/index.html
 ```
 
-Every example was checked to occur verbatim in the cleaned corpus, and every word group to be attested in it. Examples from spam comments (e.g. ads for self-help books mentioning *self-worth* or *mindset*) were excluded.
+When the repository was prepared, the examples and word groups were checked against the corpus. Most examples on the original page could not be found verbatim in the comments, so they were replaced: every example now occurs word for word in the cleaned corpus (shown with the video it comes from), and every word group is attested there. Examples from spam comments (e.g. ads for self-help books mentioning *self-worth* or *mindset*) were excluded. Definitions are written for the dictionary and linked to the reference dictionary they were checked against; translations link to Almaany, DWDS/Duden, Le Robert and RAE.
 
 ## Corpus
 
@@ -134,10 +134,10 @@ mindwords-corpus/
 │   ├── raw/                    # local only, git-ignored
 │   └── derived/                # shareable statistics + figures
 ├── dictionary/
-│   └── entries.json            # the 11 dictionary entries (source of the page)
+│   ├── entries.json            # the 11 dictionary entries
+│   └── template.html           # page design
 ├── docs/
-│   ├── index.html              # dictionary page, served by GitHub Pages
-│   └── dictionary_sample_entries.md
+│   └── index.html              # built dictionary page, served by GitHub Pages
 ├── report/
 │   └── Forschungsbericht_MindWords_de.md
 ├── scripts/

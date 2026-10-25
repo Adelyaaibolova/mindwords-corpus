@@ -1,0 +1,581 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MindWords — A Corpus-Based Dictionary</title>
+<link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Outfit:wght@300;400;500;600&family=Fira+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --bg:#EDF6F2; --bg2:#F7FBF9; --white:#FFFFFF;
+  --teal:#2A9D8F; --teal-light:#52B89A; --teal-dim:rgba(42,157,143,0.13);
+  --purple:#7B5EA7; --purple-dim:rgba(123,94,167,0.13);
+  --green:#52B788; --green-dim:rgba(82,183,136,0.13);
+  --orange:#E07A3A; --orange-dim:rgba(224,122,58,0.13);
+  --rose:#C1666B; --rose-dim:rgba(193,102,107,0.13);
+  --ink:#1A2E2B; --ink-mid:#3D5752; --muted:#7A9490;
+  --border:#C8E6DF; --border2:#E2F0EC;
+  --shadow:0 4px 24px rgba(42,157,143,0.10);
+  --shadow-hover:0 10px 40px rgba(42,157,143,0.18);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Outfit',sans-serif;background:var(--bg);color:var(--ink);min-height:100vh}
+
+/* NAV */
+.gnav{background:var(--white);border-bottom:1.5px solid var(--border);padding:0 48px;display:flex;align-items:center;justify-content:space-between;height:64px;position:sticky;top:0;z-index:200;box-shadow:0 2px 12px rgba(42,157,143,0.07)}
+.nav-logo{font-family:'Lora',serif;font-size:1.4rem;font-weight:700;color:var(--teal);cursor:pointer;letter-spacing:-0.02em;user-select:none}
+.nav-logo em{font-style:italic;font-weight:400;color:var(--purple)}
+.nav-bc{font-size:0.8rem;color:var(--muted);display:flex;align-items:center;gap:8px}
+.bc-link{cursor:pointer;color:var(--teal);font-weight:500}
+.bc-link:hover{text-decoration:underline}
+.lang-wrap{display:flex;align-items:center;gap:8px}
+.lang-lbl{font-family:'Fira Mono',monospace;font-size:0.65rem;letter-spacing:0.12em;text-transform:uppercase;color:var(--muted)}
+.lang-sel{font-family:'Outfit',sans-serif;font-size:0.82rem;font-weight:500;color:var(--ink);background:var(--bg);border:1.5px solid var(--border);border-radius:8px;padding:6px 12px;cursor:pointer;outline:none}
+.lang-sel:focus{border-color:var(--teal)}
+@media(max-width:640px){.gnav{padding:0 16px}.nav-bc{display:none}}
+
+/* PAGES */
+.pg{display:none}
+.pg.on{display:block}
+
+/* HOME HERO */
+.hero{background:linear-gradient(135deg,#2A9D8F 0%,#52B788 50%,#7B5EA7 100%);padding:72px 48px 80px;text-align:center;position:relative;overflow:hidden}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(255,255,255,0.15) 0%,transparent 60%)}
+.hero-inner{position:relative;z-index:1}
+.hero-tag{display:inline-block;font-family:'Fira Mono',monospace;font-size:0.68rem;letter-spacing:0.2em;text-transform:uppercase;color:rgba(255,255,255,0.8);background:rgba(255,255,255,0.15);padding:6px 16px;border-radius:20px;margin-bottom:24px}
+.hero-h1{font-family:'Lora',serif;font-size:clamp(3rem,7vw,5.5rem);font-weight:700;color:#fff;line-height:1;letter-spacing:-0.03em;margin-bottom:20px}
+.hero-h1 em{font-style:italic;font-weight:400}
+.hero-sub{font-size:1.05rem;font-weight:300;color:rgba(255,255,255,0.85);max-width:520px;margin:0 auto;line-height:1.65}
+.hero-meta{font-family:'Fira Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.6);letter-spacing:0.1em;margin-top:16px}
+
+/* STATS */
+.stats{background:var(--white);border-bottom:1.5px solid var(--border2);padding:18px 48px;display:flex;gap:40px;justify-content:center;flex-wrap:wrap}
+.stat-n{font-family:'Lora',serif;font-size:1.5rem;font-weight:700;color:var(--teal);text-align:center}
+.stat-l{font-size:0.72rem;color:var(--muted);text-align:center;letter-spacing:0.04em}
+
+/* HOME GRID */
+.hcontent{max-width:1040px;margin:0 auto;padding:56px 48px}
+.sec-head{font-family:'Lora',serif;font-size:1.1rem;font-weight:600;color:var(--ink);margin-bottom:28px;display:flex;align-items:center;gap:12px}
+.sec-head::after{content:'';flex:1;height:1.5px;background:var(--border)}
+.topic-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:20px}
+
+/* TOPIC CARD */
+.tcard{background:var(--white);border:1.5px solid var(--border2);border-radius:16px;padding:32px 28px;cursor:pointer;transition:transform .25s,box-shadow .25s,border-color .25s;position:relative;overflow:hidden}
+.tcard::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;border-radius:16px 16px 0 0}
+.tcard[data-th="emotion"]::before{background:linear-gradient(90deg,var(--teal),var(--teal-light))}
+.tcard[data-th="advice"]::before{background:linear-gradient(90deg,var(--green),#7EC8A0)}
+.tcard[data-th="support"]::before{background:linear-gradient(90deg,var(--purple),#A07FD4)}
+.tcard[data-th="struggle"]::before{background:linear-gradient(90deg,var(--orange),#E8A070)}
+.tcard[data-th="advice2"]::before{background:linear-gradient(90deg,var(--rose),#D4909A)}
+.tcard:hover{transform:translateY(-4px);box-shadow:var(--shadow-hover)}
+.tcard[data-th="emotion"]:hover{border-color:var(--teal)}
+.tcard[data-th="advice"]:hover{border-color:var(--green)}
+.tcard[data-th="support"]:hover{border-color:var(--purple)}
+.tcard[data-th="struggle"]:hover{border-color:var(--orange)}
+.tcard[data-th="advice2"]:hover{border-color:var(--rose)}
+.tc-icon{font-size:2rem;margin-bottom:14px;display:block}
+.tc-name{font-family:'Lora',serif;font-size:1.2rem;font-weight:600;color:var(--ink);margin-bottom:8px}
+.tc-desc{font-size:0.85rem;font-weight:300;color:var(--muted);line-height:1.6;margin-bottom:18px}
+.tc-pills{display:flex;flex-wrap:wrap;gap:6px}
+.tc-pill{font-family:'Fira Mono',monospace;font-size:0.7rem;padding:3px 10px;border-radius:20px;color:var(--muted);background:var(--bg);border:1px solid var(--border)}
+.tc-arrow{position:absolute;bottom:24px;right:24px;font-size:1.2rem;opacity:0.3;transition:opacity .2s,transform .2s}
+.tcard:hover .tc-arrow{opacity:1;transform:translateX(4px)}
+
+/* TOPIC LIST PAGE */
+.tp-head{padding:48px 48px 32px;max-width:1040px;margin:0 auto}
+.tp-row{display:flex;align-items:center;gap:20px;margin-bottom:12px}
+.tp-icon{font-size:2.4rem}
+.tp-title{font-family:'Lora',serif;font-size:2.2rem;font-weight:700;color:var(--ink);letter-spacing:-0.02em}
+.tp-desc{font-size:0.95rem;font-weight:300;color:var(--muted);line-height:1.7;max-width:600px}
+.wgrid{max-width:1040px;margin:0 auto;padding:0 48px 64px;display:grid;grid-template-columns:repeat(auto-fill,minmax(240px,1fr));gap:16px}
+
+/* WORD CARD */
+.wcard{background:var(--white);border:1.5px solid var(--border2);border-radius:12px;padding:22px 20px;cursor:pointer;transition:transform .2s,box-shadow .2s,border-color .2s;display:flex;flex-direction:column;gap:8px}
+.wcard:hover{transform:translateY(-3px);box-shadow:var(--shadow)}
+.wcard[data-th="emotion"]:hover{border-color:var(--teal)}
+.wcard[data-th="advice"]:hover{border-color:var(--green)}
+.wcard[data-th="support"]:hover{border-color:var(--purple)}
+.wcard[data-th="struggle"]:hover{border-color:var(--orange)}
+.wcard[data-th="advice2"]:hover{border-color:var(--rose)}
+.wc-word{font-family:'Lora',serif;font-size:1.4rem;font-weight:600;color:var(--ink)}
+.wc-pos{font-family:'Fira Mono',monospace;font-size:0.68rem;color:var(--muted);letter-spacing:0.08em;font-style:italic}
+.wc-def{font-size:0.82rem;font-weight:300;color:var(--muted);line-height:1.55}
+.wc-arrow{margin-top:auto;font-size:1rem;opacity:0.35;transition:opacity .15s;align-self:flex-end}
+.wcard:hover .wc-arrow{opacity:1}
+
+/* ENTRY PAGE */
+.epage{max-width:860px;margin:0 auto;padding:48px 48px 80px}
+@media(max-width:640px){.epage,.tp-head,.wgrid,.hcontent,.stats{padding-left:16px;padding-right:16px}.hero{padding:48px 16px 60px}}
+
+/* BACK BTN */
+.back-btn{display:inline-flex;align-items:center;gap:8px;font-size:0.85rem;font-weight:500;color:var(--teal);cursor:pointer;background:none;border:none;padding:10px 0;margin-bottom:24px;transition:gap .2s;font-family:'Outfit',sans-serif}
+.back-btn:hover{gap:12px}
+
+/* ENTRY HERO */
+.ehero{background:var(--white);border:1.5px solid var(--border);border-radius:20px;padding:40px 44px 36px;margin-bottom:24px;box-shadow:var(--shadow);position:relative;overflow:hidden}
+.ehero::before{content:'';position:absolute;top:0;left:0;right:0;height:5px;border-radius:20px 20px 0 0}
+.eh-emotion::before{background:linear-gradient(90deg,var(--teal),var(--teal-light))}
+.eh-advice::before{background:linear-gradient(90deg,var(--green),#7EC8A0)}
+.eh-support::before{background:linear-gradient(90deg,var(--purple),#A07FD4)}
+.eh-struggle::before{background:linear-gradient(90deg,var(--orange),#E8A070)}
+.eh-advice2::before{background:linear-gradient(90deg,var(--rose),#D4909A)}
+.eh-top{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:16px}
+.eh-word{font-family:'Lora',serif;font-size:clamp(2rem,6vw,3rem);font-weight:700;letter-spacing:-0.02em;line-height:1}
+.eh-emotion .eh-word{color:var(--teal)}
+.eh-advice  .eh-word{color:var(--green)}
+.eh-support .eh-word{color:var(--purple)}
+.eh-struggle .eh-word{color:var(--orange)}
+.eh-advice2 .eh-word{color:var(--rose)}
+.eh-pos{font-family:'Fira Mono',monospace;font-size:0.72rem;color:var(--muted);border:1px solid var(--border);padding:4px 12px;border-radius:20px;align-self:center;font-style:italic}
+.eh-freq{margin-left:auto;display:flex;align-items:center;gap:6px;font-family:'Fira Mono',monospace;font-size:0.68rem;color:var(--muted);align-self:center}
+.fbar{display:flex;gap:3px}
+.fd{width:8px;height:8px;border-radius:2px;background:var(--border)}
+.eh-emotion  .fd.on{background:var(--teal)}
+.eh-advice   .fd.on{background:var(--green)}
+.eh-support  .fd.on{background:var(--purple)}
+.eh-struggle .fd.on{background:var(--orange)}
+.eh-advice2  .fd.on{background:var(--rose)}
+.eh-def{font-family:'Lora',serif;font-size:1.1rem;font-weight:400;line-height:1.75;color:var(--ink-mid)}
+.eh-clabel{font-family:'Fira Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-top:22px;margin-bottom:10px;display:block}
+.ske-badge{display:inline-flex;align-items:center;gap:5px;font-family:'Fira Mono',monospace;font-size:0.62rem;letter-spacing:0.1em;color:var(--muted);background:var(--bg);border:1px solid var(--border2);padding:3px 10px;border-radius:20px;margin-bottom:12px}
+.clist{list-style:none;display:flex;flex-direction:column;gap:8px}
+.clist li{font-size:0.9rem;color:var(--ink-mid);padding:10px 16px;background:var(--bg2);border-radius:8px;border-left:3px solid var(--border);line-height:1.55;font-style:italic;transition:border-color .15s,background .15s;cursor:default}
+.clist li:hover{background:var(--white)}
+.eh-emotion  .clist li:hover{border-left-color:var(--teal)}
+.eh-advice   .clist li:hover{border-left-color:var(--green)}
+.eh-support  .clist li:hover{border-left-color:var(--purple)}
+.eh-struggle .clist li:hover{border-left-color:var(--orange)}
+.eh-advice2  .clist li:hover{border-left-color:var(--rose)}
+.cq{font-family:'Lora',serif;font-size:1.1rem;color:var(--border);margin-right:3px;font-style:normal}
+
+/* COLLOC CARD */
+.ecard{background:var(--white);border:1.5px solid var(--border2);border-radius:16px;padding:28px 32px;margin-bottom:20px}
+.ecard-title{font-family:'Fira Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted);margin-bottom:16px;display:block}
+.cwrap{display:flex;flex-wrap:wrap;gap:8px}
+.ctag{font-family:'Fira Mono',monospace;font-size:0.75rem;padding:6px 14px;border:1.5px solid var(--border);border-radius:8px;color:var(--ink-mid);background:transparent;cursor:default;transition:background .15s,border-color .15s,color .15s}
+.ctag.em:hover{background:var(--teal-dim);border-color:var(--teal);color:var(--teal)}
+.ctag.ad:hover{background:var(--green-dim);border-color:var(--green);color:var(--green)}
+.ctag.su:hover{background:var(--purple-dim);border-color:var(--purple);color:var(--purple)}
+.ctag.st:hover{background:var(--orange-dim);border-color:var(--orange);color:var(--orange)}
+.ctag.a2:hover{background:var(--rose-dim);border-color:var(--rose);color:var(--rose)}
+
+/* TRANSLATION CARD */
+.tcard-box{background:var(--white);border:1.5px solid var(--border2);border-radius:16px;padding:28px 32px;margin-bottom:20px}
+.tcard-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:20px;flex-wrap:wrap;gap:12px}
+.tcard-label{font-family:'Fira Mono',monospace;font-size:0.65rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--muted)}
+.lang-btns{display:flex;gap:6px;flex-wrap:wrap}
+.lbtn{font-family:'Fira Mono',monospace;font-size:0.68rem;padding:5px 12px;border:1.5px solid var(--border);border-radius:20px;color:var(--muted);background:transparent;cursor:pointer;transition:background .15s,color .15s,border-color .15s;font-weight:500}
+.lbtn.active,.lbtn:hover{background:var(--teal);border-color:var(--teal);color:#fff}
+.tpanel{display:none}
+.tpanel.on{display:block;animation:fadeUp .25s ease}
+@keyframes fadeUp{from{opacity:0;transform:translateY(6px)}to{opacity:1;transform:translateY(0)}}
+.tpanel-lang{font-family:'Fira Mono',monospace;font-size:0.68rem;color:var(--muted);letter-spacing:0.1em;text-transform:uppercase;margin-bottom:10px;display:block}
+.tpanel-word{font-family:'Lora',serif;font-size:1.9rem;font-weight:600;color:var(--teal);margin-bottom:8px;line-height:1.2;letter-spacing:-0.01em}
+.tpanel-word.rtl{direction:rtl;text-align:right;font-size:2.1rem}
+.tpanel-def{font-size:0.9rem;font-weight:300;color:var(--ink-mid);line-height:1.75;font-style:italic}
+.tpanel-def.rtl{direction:rtl;text-align:right}
+
+/* QUOTE */
+.qcard{background:linear-gradient(135deg,var(--teal) 0%,var(--purple) 100%);border-radius:16px;padding:32px 36px;margin-bottom:20px;position:relative;overflow:hidden}
+.qcard::before{content:'"';position:absolute;top:-10px;left:20px;font-family:'Lora',serif;font-size:8rem;color:rgba(255,255,255,0.1);line-height:1;font-style:italic;pointer-events:none}
+.q-text{font-family:'Lora',serif;font-size:1.05rem;font-style:italic;font-weight:400;color:rgba(255,255,255,0.95);line-height:1.75;margin-bottom:14px;position:relative}
+.q-src{font-family:'Fira Mono',monospace;font-size:0.7rem;color:rgba(255,255,255,0.65);letter-spacing:0.08em;position:relative}
+
+/* PHRASE HERO */
+.phero{background:linear-gradient(135deg,var(--purple) 0%,#9B7EC8 100%);border-radius:20px;padding:40px 44px 36px;margin-bottom:24px;color:white;box-shadow:var(--shadow-hover)}
+.ph-badge{font-family:'Fira Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.6);margin-bottom:12px;display:block}
+.ph-word{font-family:'Lora',serif;font-size:clamp(1.6rem,5vw,2.4rem);font-weight:700;font-style:italic;color:white;line-height:1.2;margin-bottom:20px}
+.ph-def{font-family:'Lora',serif;font-size:1.05rem;font-weight:400;line-height:1.75;color:rgba(255,255,255,0.88);margin-bottom:20px}
+.ph-clabel{font-family:'Fira Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;text-transform:uppercase;color:rgba(255,255,255,0.5);margin-bottom:10px;display:block}
+.phlist{list-style:none;display:flex;flex-direction:column;gap:8px}
+.phlist li{font-size:0.88rem;font-style:italic;color:rgba(255,255,255,0.82);padding:8px 14px;background:rgba(255,255,255,0.1);border-radius:8px;border-left:2px solid rgba(255,255,255,0.25);line-height:1.5;transition:background .15s}
+.phlist li:hover{background:rgba(255,255,255,0.18);border-left-color:rgba(255,255,255,0.6)}
+.vlist{list-style:none;display:flex;flex-direction:column;gap:6px}
+.vlist li{font-size:0.82rem;color:rgba(255,255,255,0.7);padding-left:16px;position:relative;font-family:'Fira Mono',monospace}
+.vlist li::before{content:'→';position:absolute;left:0;color:rgba(255,255,255,0.5)}
+
+/* FOOTER */
+footer{background:var(--white);border-top:1.5px solid var(--border2);padding:24px 48px;text-align:center}
+footer p{font-family:'Fira Mono',monospace;font-size:0.65rem;color:var(--muted);letter-spacing:0.1em;line-height:1.9}
+
+/* SOURCE LINK */
+.def-src{display:inline-flex;align-items:center;gap:5px;font-family:'Fira Mono',monospace;font-size:0.62rem;color:var(--muted);text-decoration:none;border-bottom:1px dashed var(--border);padding-bottom:1px;margin-top:10px;transition:color .15s,border-color .15s}
+.def-src:hover{color:var(--teal);border-color:var(--teal)}
+.def-src-icon{font-size:0.7rem}
+.trans-src{display:inline-flex;align-items:center;gap:4px;font-family:'Fira Mono',monospace;font-size:0.6rem;color:var(--muted);text-decoration:none;border-bottom:1px dashed var(--border);padding-bottom:1px;margin-top:8px;transition:color .15s}
+.trans-src:hover{color:var(--teal)}
+.trans-src.rtl{direction:rtl}
+
+/* SOURCE UNDER EXAMPLE, NOTE */
+.clist li .src,.phlist li .src{display:block;font-style:normal;font-size:0.72rem;color:var(--muted);margin-top:3px}
+.phlist li .src{color:rgba(255,255,255,0.6)}
+.note-card{background:var(--white);border-left:4px solid var(--purple)}
+.ecard .vlist li{color:var(--ink-mid);font-size:0.88rem}
+.ecard .vlist li::before{color:var(--purple)}
+.note-text{font-size:0.95rem;line-height:1.7;color:var(--ink-mid)}
+[role="button"]:focus-visible,button:focus-visible,a:focus-visible,select:focus-visible{outline:3px solid var(--purple);outline-offset:3px}
+@media (prefers-reduced-motion: reduce){.ani,.tpanel.on{animation:none}html{scroll-behavior:auto}.tcard:hover,.wcard:hover{transform:none}}
+
+@media(max-width:640px){.ehero,.phero{padding:28px 22px 26px}.ecard,.tcard-box{padding:22px 20px}.qcard{padding:26px 24px}}
+
+/* ANIMATIONS */
+@keyframes riseIn{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}
+.ani{animation:riseIn .4s ease both}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav class="gnav">
+  <span class="nav-logo" id="navLogo">Mind<em>Words</em></span>
+  <div class="nav-bc" id="navBc"></div>
+  <div class="lang-wrap">
+    <span class="lang-lbl">Lang</span>
+    <select class="lang-sel" id="langSel">
+      <option value="">Select language</option>
+      <option value="ar">العربية</option>
+      <option value="de">Deutsch</option>
+      <option value="fr">Français</option>
+      <option value="es">Español</option>
+    </select>
+  </div>
+</nav>
+
+<!-- HOME PAGE -->
+<div class="pg on" id="pg-home">
+  <div class="hero">
+    <div class="hero-inner">
+      <span class="hero-tag">Corpus-Based · YouTube Mental Health Discourse</span>
+      <h1 class="hero-h1">Mind<em>Words</em></h1>
+      <p class="hero-sub">A learner's dictionary of mental health &amp; self-improvement language — built from authentic YouTube comment data using Sketch Engine.</p>
+      <div class="hero-meta">Examples from 71,932 cleaned comments &nbsp;·&nbsp; 13 videos &nbsp;·&nbsp; for learners &amp; researchers</div>
+    </div>
+  </div>
+  <div class="stats">
+    <div><div class="stat-n">5</div><div class="stat-l">Thematic Domains</div></div>
+    <div><div class="stat-n">11</div><div class="stat-l">Dictionary Entries</div></div>
+    <div><div class="stat-n">5</div><div class="stat-l">Languages</div></div>
+    <div><div class="stat-n">2.2M</div><div class="stat-l">Corpus Tokens</div></div>
+  </div>
+  <div class="hcontent">
+    <div class="sec-head">Browse by Domain</div>
+    <div class="topic-grid" id="homeGrid"></div>
+  </div>
+  <footer><p>MindWords: A Corpus-Based Dictionary of Mental Health Discourse on YouTube<br>Adelya Aibolova, Souhaila Derbal, Salah Eddine Nacer Benkhemis &nbsp;·&nbsp; EMLex 2025/26<br>Examples are quoted as written, without user names &nbsp;·&nbsp; <a href="https://github.com/Adelyaaibolova/mindwords-corpus" style="color:inherit">Data, code and report on GitHub</a></p></footer>
+</div>
+
+<!-- TOPIC LIST PAGE -->
+<div class="pg" id="pg-topic">
+  <div class="tp-head">
+    <button class="back-btn" id="backToHome">← Back to Domains</button>
+    <div class="tp-row">
+      <span class="tp-icon" id="tpIcon"></span>
+      <h2 class="tp-title" id="tpTitle"></h2>
+    </div>
+    <p class="tp-desc" id="tpDesc"></p>
+  </div>
+  <div class="wgrid" id="wordGrid"></div>
+</div>
+
+<!-- ENTRY PAGE -->
+<div class="pg" id="pg-entry">
+  <div class="epage" id="eContent"></div>
+</div>
+
+<script>
+// ════ DATA ════
+const TOPICS = {
+  emotion: {
+    icon:'💭', name:'Emotional States',
+    desc:'Words expressing feelings, inner states, and emotional experiences in mental health discourse.',
+    th:'emotion', words:['anxiety','overthinking']
+  },
+  advice: {
+    icon:'🌱', name:'Self-Improvement',
+    desc:'Language of growth, discipline, and personal development in motivational YouTube content.',
+    th:'advice', words:['discipline','mindset','self-education']
+  },
+  support: {
+    icon:'🤝', name:'Support & Encouragement',
+    desc:'Empathetic phrases and solidarity expressions that build community in comment sections.',
+    th:'support', words:['empathy','you-are-not-alone']
+  },
+  struggle: {
+    icon:'🌿', name:'Struggle & Recovery',
+    desc:'Vocabulary of overcoming difficulty, healing, and navigating mental health challenges.',
+    th:'struggle', words:['healing','self-worth']
+  },
+  advice2: {
+    icon:'🔮', name:'Advice & Reflection',
+    desc:'Reflective and motivational language used to offer guidance and inspire self-reflection.',
+    th:'advice2', words:['mindfulness','self-motivation']
+  }
+};
+
+const LANG_NAMES = {ar:'العربية', de:'Deutsch', fr:'Français', es:'Español'};
+
+const DATA = /*__DATA__*/null;
+const SOURCES = /*__SOURCES__*/null;
+const DOMAIN_KEY = {'Emotional States':'emotion','Self-Improvement':'advice','Support and Encouragement':'support','Struggle and Recovery':'struggle','Advice and Reflection':'advice2'};
+function freqLevel(pm){ return pm >= 200 ? 3 : pm >= 40 ? 2 : 1; }
+function esc(s){ return String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c])); }
+const ENTRIES = {};
+DATA.entries.forEach(e => {
+  const trans = {};
+  Object.entries(e.translations).forEach(([lg, t]) => { trans[lg] = {w:t.word, d:t.definition, src:t.source}; });
+  ENTRIES[e.id] = {
+    topicKey: DOMAIN_KEY[e.domain], pos: e.pos, freq: freqLevel(e.per_million), perMillion: e.per_million,
+    isPhrase: e.pos === 'phrase', def: e.definition, defSrc: e.definition_checked_against || null,
+    corpus: e.examples, collocs: e.collocations, note: e.note, variations: e.variations || [],
+    trans: trans, quote: e.quote ? {t: e.quote.text, s: e.quote.by} : null
+  };
+});
+
+// ════ STATE ════
+let state = { page:'home', topic:null, word:null, lang:'de' };
+
+// ════ PAGE HELPERS ════
+function showPage(id) {
+  document.querySelectorAll('.pg').forEach(p => p.classList.remove('on'));
+  document.getElementById(id).classList.add('on');
+  window.scrollTo(0, 0);
+}
+
+function setBc(items) {
+  const bc = document.getElementById('navBc');
+  if (!items.length) { bc.innerHTML = ''; return; }
+  bc.innerHTML = items.map((it, i) => {
+    const isLast = i === items.length - 1;
+    if (isLast) return `<span>${it.label}</span>`;
+    return `<span class="bc-link" data-bc="${it.action}">${it.label}</span><span>›</span>`;
+  }).join('');
+}
+
+// ════ HOME ════
+function renderHome() {
+  const grid = document.getElementById('homeGrid');
+  grid.innerHTML = Object.entries(TOPICS).map(([key, t]) => {
+    const pills = t.words.map(w => {
+      const label = w === 'you-are-not-alone' ? '"you are not alone"' : w.replace(/-/g,' ');
+      return `<span class="tc-pill">${label}</span>`;
+    }).join('');
+    return `<div class="tcard ani" data-th="${t.th}" data-action="topic:${key}" role="button" tabindex="0">
+      <span class="tc-icon">${t.icon}</span>
+      <div class="tc-name">${t.name}</div>
+      <div class="tc-desc">${t.desc}</div>
+      <div class="tc-pills">${pills}</div>
+      <span class="tc-arrow">→</span>
+    </div>`;
+  }).join('');
+}
+
+function goHome() {
+  state = { page:'home', topic:null, word:null, lang: state.lang || 'de' };
+  showPage('pg-home');
+  setBc([]);
+}
+
+// ════ TOPIC ════
+function goTopic(key) {
+  state.page = 'topic'; state.topic = key; state.word = null;
+  const t = TOPICS[key];
+  document.getElementById('tpIcon').textContent = t.icon;
+  document.getElementById('tpTitle').textContent = t.name;
+  document.getElementById('tpDesc').textContent = t.desc;
+
+  const grid = document.getElementById('wordGrid');
+  grid.innerHTML = t.words.map(wKey => {
+    const e = ENTRIES[wKey];
+    if (!e) return '';
+    const label = wKey === 'you-are-not-alone' ? '"you are not alone"' : wKey.replace(/-/g,' ');
+    const pos = e.isPhrase ? 'phrase entry' : e.pos;
+    const defShort = e.def.length > 90 ? e.def.substring(0, e.def.lastIndexOf(' ', 90)) + '…' : e.def;
+    return `<div class="wcard ani" data-th="${t.th}" data-action="entry:${wKey}" role="button" tabindex="0">
+      <div class="wc-word">${label}</div>
+      <div class="wc-pos">${pos}</div>
+      <div class="wc-def">${defShort}</div>
+      <span class="wc-arrow">→</span>
+    </div>`;
+  }).join('');
+
+  setBc([{label:'Home', action:'home'}, {label: t.name}]);
+  showPage('pg-topic');
+}
+
+// ════ ENTRY ════
+function collocClass(topicKey) {
+  return {emotion:'em',advice:'ad',support:'su',struggle:'st',advice2:'a2'}[topicKey] || '';
+}
+
+function goEntry(wKey) {
+  state.page = 'entry'; state.word = wKey;
+  const e = ENTRIES[wKey];
+  if (!e) return;
+  const t = TOPICS[e.topicKey];
+
+  let html = '';
+  const thC = `eh-${e.topicKey}`;
+  const cClass = collocClass(e.topicKey);
+
+  // — PHRASE —
+  if (e.isPhrase) {
+    const corpusItems = e.corpus.map(c => `<li>${esc(c.text)}<span class="src">${esc(SOURCES[c.source] || c.source)}</span></li>`).join('');
+    const varItems = e.variations.map(v => `<li>${esc(v)}</li>`).join('');
+    html += `<div class="phero">
+      <span class="ph-badge">▸ Phrase Entry &nbsp;·&nbsp; ${t.name}</span>
+      <div class="ph-word">"you are not alone"</div>
+      <div class="ph-def">${esc(e.def)}</div>
+      <span class="ph-clabel">Corpus Examples (YouTube Comments)</span>
+      <ul class="phlist">${corpusItems}</ul>
+    </div>
+    <div class="ecard ani">
+      <span class="ecard-title">Variation Patterns</span>
+      <ul class="vlist">${varItems}</ul>
+    </div>
+    <div class="ecard ani note-card">
+      <span class="ecard-title">Usage Note</span>
+      <p class="note-text">${esc(e.note)}</p>
+    </div>`;
+  }
+  // — WORD —
+  else {
+    const label = wKey.replace(/-/g,' ');
+    const freqLabel = e.freq===3?'High Frequency':e.freq===2?'Medium Frequency':'Low Frequency';
+    const dots = [1,2,3].map(i=>`<span class="fd${i<=e.freq?' on':''}"></span>`).join('');
+    const corpusItems = e.corpus.map(c=>`<li><span class="cq">"</span>${esc(c.text)}<span class="src">${esc(SOURCES[c.source] || c.source)}</span></li>`).join('');
+    const collocItems = e.collocs.map(c=>`<span class="ctag ${cClass}">${esc(c)}</span>`).join('');
+    const srcHtml = e.defSrc ? `<a class="def-src" href="${e.defSrc.url}" target="_blank" rel="noopener"><span class="def-src-icon">📖</span> Checked against: ${esc(e.defSrc.label)}</a>` : '';
+    html += `<div class="ehero ${thC} ani">
+      <div class="eh-top">
+        <span class="eh-word">${label}</span>
+        <span class="eh-pos">${e.pos}</span>
+        <span class="eh-freq" title="${e.perMillion} per million tokens"><div class="fbar">${dots}</div>&nbsp;${freqLabel}</span>
+      </div>
+      <p class="eh-def">${esc(e.def)}</p>
+      ${srcHtml}
+      <span class="eh-clabel">Corpus Examples (YouTube Comments)</span>
+      <div class="ske-badge">◈ Quoted as written &nbsp;·&nbsp; video in grey</div>
+      <ul class="clist">${corpusItems}</ul>
+    </div>
+    <div class="ecard ani">
+      <span class="ecard-title">Common Word Groups</span>
+      <div class="cwrap">${collocItems}</div>
+    </div>
+    <div class="ecard ani note-card">
+      <span class="ecard-title">Usage Note</span>
+      <p class="note-text">${esc(e.note)}</p>
+    </div>`;
+  }
+
+  // — TRANSLATION —
+  const langBtns = Object.keys(e.trans).map(lg =>
+    `<button class="lbtn${state.lang===lg?' active':''}" data-lg="${lg}" data-wkey="${wKey}">${LANG_NAMES[lg]}</button>`
+  ).join('');
+  const panels = Object.entries(e.trans).map(([lg, td]) => {
+    const rtl = lg === 'ar' ? ' rtl' : '';
+    const show = state.lang === lg ? ' on' : '';
+    const srcLink = td.src ? `<a class="trans-src${rtl}" href="${td.src.url}" target="_blank" rel="noopener">📖 Source: ${td.src.label}</a>` : '';
+    return `<div class="tpanel${show}" id="tp-${wKey}-${lg}">
+      <span class="tpanel-lang">${LANG_NAMES[lg]}</span>
+      <div class="tpanel-word${rtl}" lang="${lg}">${esc(td.w)}</div>
+      <div class="tpanel-def${rtl}" lang="${lg}">${esc(td.d)}</div>
+      ${srcLink}
+    </div>`;
+  }).join('');
+  html += `<div class="tcard-box ani">
+    <div class="tcard-head">
+      <span class="tcard-label">Translation</span>
+      <div class="lang-btns" id="lbtns-${wKey}">${langBtns}</div>
+    </div>
+    <div id="tpanels-${wKey}">${panels}</div>
+  </div>`;
+
+  // — QUOTE —
+  if (e.quote) {
+    html += `<div class="qcard ani">
+      <p class="q-text">${esc(e.quote.t)}</p>
+      <div class="q-src">— ${esc(e.quote.s)}</div>
+    </div>`;
+  }
+
+  const container = document.getElementById('eContent');
+  container.innerHTML =
+    `<button class="back-btn" data-action="topic:${e.topicKey}">← Back to ${t.name}</button>` + html;
+
+  const wordLabel = wKey === 'you-are-not-alone' ? '"you are not alone"' : wKey.replace(/-/g,' ');
+  setBc([
+    {label:'Home', action:'home'},
+    {label: t.name, action:`topic:${e.topicKey}`},
+    {label: wordLabel}
+  ]);
+  showPage('pg-entry');
+}
+
+// ════ LANG SWITCH ════
+function switchLang(wKey, lg) {
+  state.lang = lg;
+  const e = ENTRIES[wKey];
+  if (!e) return;
+  // panels
+  Object.keys(e.trans).forEach(l => {
+    const el = document.getElementById(`tp-${wKey}-${l}`);
+    if (el) el.classList.toggle('on', l === lg);
+  });
+  // buttons
+  document.querySelectorAll(`#lbtns-${wKey} .lbtn`).forEach(b => {
+    b.classList.toggle('active', b.dataset.lg === lg);
+  });
+}
+
+// ════ GLOBAL LANG SELECT ════
+document.getElementById('langSel').addEventListener('change', function() {
+  const lg = this.value;
+  if (!lg) return;
+  state.lang = lg;
+  if (state.page === 'entry' && state.word) {
+    const e = ENTRIES[state.word];
+    if (e && e.trans[lg]) switchLang(state.word, lg);
+  }
+});
+
+// ════ EVENT DELEGATION — all clicks go here ════
+document.addEventListener('click', function(ev) {
+  // data-action on any element
+  const actionEl = ev.target.closest('[data-action]');
+  if (actionEl) {
+    const action = actionEl.dataset.action;
+    if (action === 'home') { goHome(); return; }
+    if (action.startsWith('topic:')) { goTopic(action.split(':')[1]); return; }
+    if (action.startsWith('entry:')) { goEntry(action.split(':')[1]); return; }
+  }
+  // lang buttons
+  const lbtn = ev.target.closest('.lbtn');
+  if (lbtn && lbtn.dataset.lg && lbtn.dataset.wkey) {
+    switchLang(lbtn.dataset.wkey, lbtn.dataset.lg);
+    return;
+  }
+  // breadcrumb
+  const bcLink = ev.target.closest('.bc-link');
+  if (bcLink && bcLink.dataset.bc) {
+    const bc = bcLink.dataset.bc;
+    if (bc === 'home') { goHome(); return; }
+    if (bc.startsWith('topic:')) { goTopic(bc.split(':')[1]); return; }
+  }
+  // logo
+  if (ev.target.closest('#navLogo')) { goHome(); return; }
+  // back to home btn
+  if (ev.target.closest('#backToHome')) { goHome(); return; }
+});
+
+document.addEventListener('keydown', function(ev) {
+  if ((ev.key === 'Enter' || ev.key === ' ') && ev.target.matches('[data-action][role="button"]')) {
+    ev.preventDefault(); ev.target.click();
+  }
+});
+
+// ════ INIT ════
+renderHome();
+</script>
+</body>
+</html>
