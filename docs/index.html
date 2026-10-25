@@ -1,0 +1,562 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>MindWords dictionary</title>
+<meta name="description" content="A corpus-based dictionary of mental health discourse on YouTube">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:ital,wght@0,400;0,700;1,400&family=Literata:ital,opsz,wght@0,7..72,400;0,7..72,600;1,7..72,400&family=Noto+Naskh+Arabic:wght@500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --paper: #F3F4EF;
+  --sheet: #FBFBF8;
+  --ink: #1C2033;
+  --muted: #5A5F6E;
+  --rule: #D7D9D0;
+  --teal: #1F6B66;
+  --teal-soft: #DCEBE8;
+  --plum: #74476A;
+  --plum-soft: #F0E5EC;
+  --serif: "Literata", Georgia, serif;
+  --sans: "Atkinson Hyperlegible", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --paper: #14171E; --sheet: #1A1E27; --ink: #E5E7EC; --muted: #A2A7B4; --rule: #2C313D;
+    --teal: #74C3B9; --teal-soft: #1F3533; --plum: #D7A2C6; --plum-soft: #34232F;
+  }
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; scroll-padding-top: 1.5rem; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  margin: 0; background: var(--paper); color: var(--ink);
+  font: 1.0625rem/1.6 var(--sans);
+}
+a { color: var(--teal); }
+:focus-visible { outline: 3px solid var(--teal); outline-offset: 2px; border-radius: 3px; }
+
+.masthead { max-width: 72rem; margin: 0 auto; padding: 3.5rem 1.25rem 2rem; }
+.masthead h1 {
+  font: 600 clamp(3rem, 9vw, 6rem)/0.95 var(--serif); letter-spacing: -0.02em; margin: 0;
+}
+.masthead .sub { font: italic 1.25rem/1.4 var(--serif); color: var(--muted); margin: 0.75rem 0 1.75rem; max-width: 36rem; }
+.search { display: flex; flex-direction: column; gap: 0.4rem; max-width: 34rem; }
+.search label { font-size: 0.95rem; color: var(--muted); }
+.search input {
+  font: 1.25rem var(--serif); color: var(--ink); background: var(--sheet);
+  border: 2px solid var(--rule); border-radius: 10px; padding: 0.7rem 0.9rem;
+}
+.search input:focus { border-color: var(--teal); outline: none; box-shadow: 0 0 0 3px var(--teal-soft); }
+.count { font-size: 0.95rem; color: var(--muted); margin: 0.6rem 0 0; }
+
+.layout { max-width: 72rem; margin: 0 auto; padding: 0 1.25rem 4rem; display: grid; grid-template-columns: 13.5rem 1fr; gap: 3rem; }
+nav.index { position: sticky; top: 1.5rem; align-self: start; max-height: calc(100vh - 3rem); overflow: auto; }
+nav.index ul { list-style: none; margin: 0; padding: 0; }
+.nav-domain { margin-bottom: 1.1rem; }
+.nav-domain > span { display: block; font-size: 0.85rem; color: var(--muted); margin-bottom: 0.2rem; }
+.nav-domain a { display: block; font: 1.05rem/1.7 var(--serif); color: var(--ink); text-decoration: none; padding-left: 0.6rem; border-left: 2px solid var(--rule); }
+.nav-domain a:hover { border-left-color: var(--teal); color: var(--teal); }
+.nav-domain a.dim { opacity: 0.35; }
+
+main { min-width: 0; }
+.entry { background: var(--sheet); border: 1px solid var(--rule); border-radius: 14px; padding: 2rem 2.25rem 2.25rem; margin-bottom: 2rem; max-width: 46rem; }
+.entry-head { display: flex; flex-wrap: wrap; align-items: baseline; gap: 0.4rem 1rem; border-bottom: 1px solid var(--rule); padding-bottom: 1rem; }
+.hw { font: 600 clamp(2.1rem, 5vw, 2.9rem)/1.05 var(--serif); margin: 0; letter-spacing: -0.01em; }
+.pos { font: italic 1.05rem var(--serif); color: var(--muted); margin: 0; }
+.freq { display: flex; align-items: center; gap: 0.5rem; font-size: 0.9rem; color: var(--muted); margin: 0 0 0 auto; }
+.dots { display: inline-flex; gap: 3px; }
+.dot { width: 9px; height: 9px; border-radius: 50%; border: 1.5px solid var(--teal); }
+.dot.on { background: var(--teal); }
+.def { font: 1.2rem/1.55 var(--serif); margin: 1.2rem 0 0.4rem; }
+
+.block { margin-top: 1.6rem; }
+.block h3 { font: 700 0.95rem var(--sans); color: var(--muted); margin: 0 0 0.6rem; }
+.examples { list-style: none; margin: 0; padding: 0; }
+.examples li { border-left: 3px solid var(--teal-soft); padding: 0.15rem 0 0.15rem 0.9rem; margin-bottom: 0.75rem; }
+.examples q { font: italic 1.05rem/1.5 var(--serif); quotes: none; }
+.examples cite { display: block; font: normal 0.82rem var(--sans); color: var(--muted); margin-top: 0.15rem; }
+.collocs { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.45rem; }
+.collocs li { background: var(--teal-soft); color: var(--ink); border-radius: 999px; padding: 0.2rem 0.75rem; font-size: 0.95rem; }
+.note { background: var(--plum-soft); border-radius: 10px; padding: 0.9rem 1.1rem; }
+.note h3 { color: var(--plum); }
+.note p { margin: 0; }
+.trans { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 0.6rem 1.2rem; margin: 0; }
+.trans dt { font-size: 0.82rem; color: var(--muted); }
+.trans dd { margin: 0; font: 1.05rem var(--serif); }
+.trans dd[lang="ar"] { font-family: "Noto Naskh Arabic", var(--serif); font-size: 1.2rem; text-align: left; line-height: 1.4; }
+.quote { margin: 1.8rem 0 0; padding-top: 1.2rem; border-top: 1px dashed var(--rule); }
+.quote p { font: italic 1.1rem/1.5 var(--serif); margin: 0; }
+.quote footer { font-size: 0.85rem; color: var(--muted); margin-top: 0.3rem; }
+.empty { font: 1.15rem var(--serif); color: var(--muted); max-width: 46rem; }
+
+.about { border-top: 1px solid var(--rule); max-width: 72rem; margin: 0 auto; padding: 2rem 1.25rem 3rem; color: var(--muted); font-size: 0.95rem; }
+.about p { max-width: 46rem; margin: 0 0 0.6rem; }
+
+@media (max-width: 52rem) {
+  .layout { grid-template-columns: 1fr; gap: 1.5rem; }
+  nav.index { position: static; max-height: none; }
+  nav.index > ul, .nav-domain ul { display: flex; flex-wrap: wrap; gap: 0.4rem; }
+  .nav-domain { display: contents; }
+  .nav-domain > span { display: none; }
+  .nav-domain a { border: 1px solid var(--rule); border-radius: 999px; padding: 0.1rem 0.7rem; font-size: 0.95rem; background: var(--sheet); }
+  .trans { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .entry { padding: 1.4rem 1.2rem 1.6rem; }
+  .freq { margin-left: 0; width: 100%; }
+}
+</style>
+</head>
+<body>
+<header class="masthead">
+  <h1>MindWords</h1>
+  <p class="sub">A corpus-based dictionary of mental health discourse on YouTube: what people really mean when they write about anxiety, discipline or healing under a video.</p>
+  <div class="search" role="search">
+    <label for="q">Look up a word, phrase or translation</label>
+    <input id="q" type="search" placeholder="anxiety, mindset, Achtsamkeit…" autocomplete="off">
+  </div>
+  <p class="count" id="count" aria-live="polite">11 entries in 5 domains</p>
+</header>
+
+<div class="layout">
+  <nav class="index" aria-label="All entries">
+    <ul>
+<li class="nav-domain"><span>Emotional States</span><ul><li><a href="#anxiety">anxiety</a></li><li><a href="#overthinking">overthinking</a></li></ul></li>
+<li class="nav-domain"><span>Self-Improvement</span><ul><li><a href="#discipline">discipline</a></li><li><a href="#mindset">mindset</a></li><li><a href="#self-education">self-education</a></li></ul></li>
+<li class="nav-domain"><span>Support and Encouragement</span><ul><li><a href="#empathy">empathy</a></li><li><a href="#you-are-not-alone">you are not alone</a></li></ul></li>
+<li class="nav-domain"><span>Struggle and Recovery</span><ul><li><a href="#healing">healing</a></li><li><a href="#self-worth">self-worth</a></li></ul></li>
+<li class="nav-domain"><span>Advice and Reflection</span><ul><li><a href="#mindfulness">mindfulness</a></li><li><a href="#self-motivation">self-motivation</a></li></ul></li>
+    </ul>
+  </nav>
+  <main>
+
+<article class="entry" id="anxiety" data-search="anxiety social anxiety anxiety and depression anxiety disorder anxiety attack severe anxiety generalized anxiety constant anxiety anxiety meds قلق die angst, die ängstlichkeit l&#x27;anxiété la ansiedad emotional states" data-domain="Emotional States">
+  <header class="entry-head">
+    <h2 class="hw">anxiety</h2>
+    <p class="pos">noun</p>
+    <p class="freq" title="425.7 per million tokens">
+      <span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>
+      <span>very frequent, 425.7 per million</span>
+    </p>
+  </header>
+  <p class="def">A strong feeling of worry or nervousness about something that is happening or might happen. In the comments it is mostly spoken of as a named condition that people have, are diagnosed with, or try to reduce.</p>
+  <section class="block">
+    <h3>From the comments</h3>
+    <ul class="examples"><li><q>Every time I experience anxiety or panic attack I come back to this video.</q><cite>Dry Creek Wrangler School</cite></li>
+<li><q>I went to a therapist and she told me I had light depression and moderate to high anxiety.</q><cite>Kati Morton</cite></li>
+<li><q>I&#x27;ve been dealing with serious anxiety for a while.</q><cite>Frederik Imbo (TEDx)</cite></li>
+<li><q>Social anxiety, depression are my diagnosis basically.</q><cite>Kati Morton</cite></li>
+<li><q>Then I started on the anxiety meds which only made my anxiety 10 times worse.</q><cite>Kati Morton</cite></li></ul>
+  </section>
+  <section class="block">
+    <h3>Common word groups</h3>
+    <ul class="collocs"><li>social anxiety</li><li>anxiety and depression</li><li>anxiety disorder</li><li>anxiety attack</li><li>severe anxiety</li><li>generalized anxiety</li><li>constant anxiety</li><li>anxiety meds</li></ul>
+  </section>
+  <section class="block note">
+    <h3>Usage note</h3>
+    <p>Very often the head of a noun compound: social, separation, job, death anxiety, and the creative coinage trickle-down anxiety. It is usually listed together with depression. A counter-narrative also appears in the corpus: anxiety is not an enemy, it is a signal.</p>
+  </section>
+  <section class="block">
+    <h3>Translations</h3>
+    <dl class="trans"><div><dt>Arabic</dt><dd lang="ar" dir="rtl">قلق</dd></div>
+<div><dt>German</dt><dd lang="de" dir="ltr">die Angst, die Ängstlichkeit</dd></div>
+<div><dt>French</dt><dd lang="fr" dir="ltr">l&#x27;anxiété</dd></div>
+<div><dt>Spanish</dt><dd lang="es" dir="ltr">la ansiedad</dd></div></dl>
+  </section>
+  <blockquote class="quote"><p>You don&#x27;t have to control your thoughts. You just have to stop letting them control you.</p><footer>commonly attributed to Dan Millman</footer></blockquote>
+</article>
+
+<article class="entry" id="overthinking" data-search="overthinking stop overthinking always overthink overthink everything overthinking about overthinking loop stop overthinking it الإفراط في التفكير das grübeln, das zerdenken la rumination, le fait de trop réfléchir pensar demasiado, la rumiación emotional states" data-domain="Emotional States">
+  <header class="entry-head">
+    <h2 class="hw">overthinking</h2>
+    <p class="pos">noun / verb (overthink)</p>
+    <p class="freq" title="45.6 per million tokens">
+      <span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span>
+      <span>common, 45.6 per million</span>
+    </p>
+  </header>
+  <p class="def">Thinking about something for too long or too much, so that it causes worry instead of helping you decide. Commenters use it to describe a habit or a state they are stuck in.</p>
+  <section class="block">
+    <h3>From the comments</h3>
+    <ul class="examples"><li><q>I overthink everything I’ve said ever &amp; I relive conversations &amp; get wound up, every single day.</q><cite>Kati Morton</cite></li>
+<li><q>I won’t give my energy to overthinking anymore.</q><cite>Thewizardliz</cite></li>
+<li><q>It&#x27;s the overthinking that creates the tug-of-war.</q><cite>Jonathan Bricker (TEDxRainier)</cite></li>
+<li><q>I&#x27;m always overthinking and analysing everything.</q><cite>Kati Morton</cite></li>
+<li><q>And she will just keep telling me to be positive and stop overthinking.</q><cite>Kati Morton</cite></li></ul>
+  </section>
+  <section class="block">
+    <h3>Common word groups</h3>
+    <ul class="collocs"><li>stop overthinking</li><li>always overthink</li><li>overthink everything</li><li>overthinking about</li><li>overthinking loop</li><li>stop overthinking it</li></ul>
+  </section>
+  <section class="block note">
+    <h3>Usage note</h3>
+    <p>Typically used with always or with an object like everything. The imperative stop overthinking is often quoted as unhelpful advice from others. The informal spelling abt (about) is common after it.</p>
+  </section>
+  <section class="block">
+    <h3>Translations</h3>
+    <dl class="trans"><div><dt>Arabic</dt><dd lang="ar" dir="rtl">الإفراط في التفكير</dd></div>
+<div><dt>German</dt><dd lang="de" dir="ltr">das Grübeln, das Zerdenken</dd></div>
+<div><dt>French</dt><dd lang="fr" dir="ltr">la rumination, le fait de trop réfléchir</dd></div>
+<div><dt>Spanish</dt><dd lang="es" dir="ltr">pensar demasiado, la rumiación</dd></div></dl>
+  </section>
+  <blockquote class="quote"><p>We suffer more often in imagination than in reality.</p><footer>Seneca</footer></blockquote>
+</article>
+
+<article class="entry" id="discipline" data-search="discipline self-discipline little discipline lack of discipline build discipline practice and discipline discipline and training be disciplined الانضباط die disziplin la discipline la disciplina self-improvement" data-domain="Self-Improvement">
+  <header class="entry-head">
+    <h2 class="hw">discipline</h2>
+    <p class="pos">noun</p>
+    <p class="freq" title="82.5 per million tokens">
+      <span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span>
+      <span>common, 82.5 per million</span>
+    </p>
+  </header>
+  <p class="def">The ability to control your own behaviour and keep doing what you planned, built up through regular practice. In this corpus it almost always means self-discipline, not rules imposed by others.</p>
+  <section class="block">
+    <h3>From the comments</h3>
+    <ul class="examples"><li><q>Discipline is choosing between what you want now and what you want most.</q><cite>Jonathan Bricker (TEDxRainier)</cite></li>
+<li><q>Start with the little disciplines because those will lead to the big ones.</q><cite>GrindBuddy</cite></li>
+<li><q>Discipline isn&#x27;t a sacrifice, it is an enrichment.</q><cite>Jonathan Bricker (TEDxRainier)</cite></li>
+<li><q>Please first have the discipline to do what you planned.</q><cite>Frederik Imbo (TEDx)</cite></li>
+<li><q>I have lacked self discipline for a very long time.</q><cite>Jonathan Bricker (TEDxRainier)</cite></li></ul>
+  </section>
+  <section class="block">
+    <h3>Common word groups</h3>
+    <ul class="collocs"><li>self-discipline</li><li>little discipline</li><li>lack of discipline</li><li>build discipline</li><li>practice and discipline</li><li>discipline and training</li><li>be disciplined</li></ul>
+  </section>
+  <section class="block note">
+    <h3>Usage note</h3>
+    <p>Strongly metaphorical: discipline is a gateway, an engine, freedom, and a discipline muscle you train. In general web English (English Web 2021) the word is institutional instead: academic or strict discipline that is imposed or enforced.</p>
+  </section>
+  <section class="block">
+    <h3>Translations</h3>
+    <dl class="trans"><div><dt>Arabic</dt><dd lang="ar" dir="rtl">الانضباط</dd></div>
+<div><dt>German</dt><dd lang="de" dir="ltr">die Disziplin</dd></div>
+<div><dt>French</dt><dd lang="fr" dir="ltr">la discipline</dd></div>
+<div><dt>Spanish</dt><dd lang="es" dir="ltr">la disciplina</dd></div></dl>
+  </section>
+  <blockquote class="quote"><p>Discipline is the bridge between goals and accomplishment.</p><footer>commonly attributed to Jim Rohn</footer></blockquote>
+</article>
+
+<article class="entry" id="mindset" data-search="mindset change your mindset victim mindset positive mindset right mindset growth mindset mindset shift fix my mindset العقلية، طريقة التفكير die denkweise, die einstellung, das mindset l&#x27;état d&#x27;esprit la mentalidad self-improvement" data-domain="Self-Improvement">
+  <header class="entry-head">
+    <h2 class="hw">mindset</h2>
+    <p class="pos">noun</p>
+    <p class="freq" title="131.3 per million tokens">
+      <span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span>
+      <span>frequent, 131.3 per million</span>
+    </p>
+  </header>
+  <p class="def">A person&#x27;s usual way of thinking and the attitudes that come with it. Commenters treat it as something you can change, fix or carry into a situation.</p>
+  <section class="block">
+    <h3>From the comments</h3>
+    <ul class="examples"><li><q>It starts with changing your mindset.</q><cite>Kati Morton</cite></li>
+<li><q>I never in my life had the victim mindset.</q><cite>Joe Dispenza</cite></li>
+<li><q>That helps you get rid of the &quot;I have to be right&quot; mindset</q><cite>Frederik Imbo (TEDx)</cite></li>
+<li><q>You’re no burden, and I know that’s a hard mindset to come out of but you’re not.</q><cite>Kati Morton</cite></li>
+<li><q>Yet here I am remaining in the same mindset as I was 😑</q><cite>Kati Morton</cite></li></ul>
+  </section>
+  <section class="block">
+    <h3>Common word groups</h3>
+    <ul class="collocs"><li>change your mindset</li><li>victim mindset</li><li>positive mindset</li><li>right mindset</li><li>growth mindset</li><li>mindset shift</li><li>fix my mindset</li></ul>
+  </section>
+  <section class="block note">
+    <h3>Usage note</h3>
+    <p>Often pre-modified by a type: victim, positive, growth, or a quoted phrase like the &quot;I have to be right&quot; mindset. Close neighbours are attitude, mentality and way of thinking. Watch out: many hits in the GrindBuddy comments come from spam advertising a money-mindset book.</p>
+  </section>
+  <section class="block">
+    <h3>Translations</h3>
+    <dl class="trans"><div><dt>Arabic</dt><dd lang="ar" dir="rtl">العقلية، طريقة التفكير</dd></div>
+<div><dt>German</dt><dd lang="de" dir="ltr">die Denkweise, die Einstellung, das Mindset</dd></div>
+<div><dt>French</dt><dd lang="fr" dir="ltr">l&#x27;état d&#x27;esprit</dd></div>
+<div><dt>Spanish</dt><dd lang="es" dir="ltr">la mentalidad</dd></div></dl>
+  </section>
+  <blockquote class="quote"><p>Whether you think you can, or you think you can&#x27;t — you&#x27;re right.</p><footer>commonly attributed to Henry Ford</footer></blockquote>
+</article>
+
+<article class="entry" id="self-education" data-search="self-education self-education is key emphasizes self-education become self-educated التعلّم الذاتي die selbstbildung l&#x27;autoformation la autoformación, la autoeducación self-improvement" data-domain="Self-Improvement">
+  <header class="entry-head">
+    <h2 class="hw">self-education</h2>
+    <p class="pos">noun</p>
+    <p class="freq" title="10.5 per million tokens">
+      <span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+      <span>rare, 10.5 per million</span>
+    </p>
+  </header>
+  <p class="def">Learning things by yourself, outside school or formal training, usually by reading and practising. In the comments it is praised as a key to success.</p>
+  <section class="block">
+    <h3>From the comments</h3>
+    <ul class="examples"><li><q>Rohn&#x27;s point on self-education really hits home-so much power in taking control of your learning!</q><cite>GrindBuddy</cite></li>
+<li><q>Formal education will make you a living; self-education will make you a fortune.</q><cite>GrindBuddy</cite></li>
+<li><q>I love how Jim emphasizes self-education.</q><cite>GrindBuddy</cite></li>
+<li><q>Self-educated is the most important thing we must learn..</q><cite>GrindBuddy</cite></li></ul>
+  </section>
+  <section class="block">
+    <h3>Common word groups</h3>
+    <ul class="collocs"><li>self-education is key</li><li>emphasizes self-education</li><li>become self-educated</li></ul>
+  </section>
+  <section class="block note">
+    <h3>Usage note</h3>
+    <p>Rare and concentrated in one video (GrindBuddy, quoting Jim Rohn), so the examples come from a single source. The adjective self-educated is as frequent as the noun. Part of a productive family with self-discipline, self-worth and self-motivation.</p>
+  </section>
+  <section class="block">
+    <h3>Translations</h3>
+    <dl class="trans"><div><dt>Arabic</dt><dd lang="ar" dir="rtl">التعلّم الذاتي</dd></div>
+<div><dt>German</dt><dd lang="de" dir="ltr">die Selbstbildung</dd></div>
+<div><dt>French</dt><dd lang="fr" dir="ltr">l&#x27;autoformation</dd></div>
+<div><dt>Spanish</dt><dd lang="es" dir="ltr">la autoformación, la autoeducación</dd></div></dl>
+  </section>
+  <blockquote class="quote"><p>Formal education will make you a living; self-education will make you a fortune.</p><footer>commonly attributed to Jim Rohn</footer></blockquote>
+</article>
+
+<article class="entry" id="empathy" data-search="empathy give yourself empathy lack empathy no empathy feel empathy show empathy cognitive empathy emotional empathy empathy towards التعاطف die empathie, das einfühlungsvermögen l&#x27;empathie la empatía support and encouragement" data-domain="Support and Encouragement">
+  <header class="entry-head">
+    <h2 class="hw">empathy</h2>
+    <p class="pos">noun</p>
+    <p class="freq" title="297.7 per million tokens">
+      <span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span></span>
+      <span>frequent, 297.7 per million</span>
+    </p>
+  </header>
+  <p class="def">The ability to understand and share another person&#x27;s feelings. In this corpus it is also turned inwards: giving yourself empathy means treating yourself with understanding.</p>
+  <section class="block">
+    <h3>From the comments</h3>
+    <ul class="examples"><li><q>It&#x27;s about me, my insecurities - give yourself some empathy.</q><cite>Frederik Imbo (TEDx)</cite></li>
+<li><q>I have found that the older I get the more empathy I have.</q><cite>Kati Morton</cite></li>
+<li><q>My POV today: I have big empathy for the child my parent once was.</q><cite>Kati Morton</cite></li>
+<li><q>Empathy is not feeling what others feel because you can never know without listening.</q><cite>Kati Morton</cite></li>
+<li><q>I also have tons of empathy and compassion for others.</q><cite>Kati Morton</cite></li></ul>
+  </section>
+  <section class="block">
+    <h3>Common word groups</h3>
+    <ul class="collocs"><li>give yourself empathy</li><li>lack empathy</li><li>no empathy</li><li>feel empathy</li><li>show empathy</li><li>cognitive empathy</li><li>emotional empathy</li><li>empathy towards</li></ul>
+  </section>
+  <section class="block note">
+    <h3>Usage note</h3>
+    <p>Two distinct uses. Self-directed: give yourself empathy, close to self-compassion (from the TEDx talk on not taking things personally). Clinical: in the narcissism video it is discussed as something people lack, fake or have in cognitive and emotional forms. Most hits come from that one video.</p>
+  </section>
+  <section class="block">
+    <h3>Translations</h3>
+    <dl class="trans"><div><dt>Arabic</dt><dd lang="ar" dir="rtl">التعاطف</dd></div>
+<div><dt>German</dt><dd lang="de" dir="ltr">die Empathie, das Einfühlungsvermögen</dd></div>
+<div><dt>French</dt><dd lang="fr" dir="ltr">l&#x27;empathie</dd></div>
+<div><dt>Spanish</dt><dd lang="es" dir="ltr">la empatía</dd></div></dl>
+  </section>
+  <blockquote class="quote"><p>Be kind, for everyone you meet is fighting a hard battle.</p><footer>commonly attributed to Ian Maclaren</footer></blockquote>
+</article>
+
+<article class="entry" id="you-are-not-alone" data-search="you are not alone know you&#x27;re not alone know that you are not alone you are not alone in this realize you are not alone لستَ وحدك du bist nicht allein tu n&#x27;es pas seul(e) no estás solo/a support and encouragement" data-domain="Support and Encouragement">
+  <header class="entry-head">
+    <h2 class="hw">you are not alone</h2>
+    <p class="pos">phrase</p>
+    <p class="freq" title="48.3 per million tokens">
+      <span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span>
+      <span>common, 48.3 per million</span>
+    </p>
+  </header>
+  <p class="def">Said to someone who is struggling, to tell them that other people feel the same and understand them.</p>
+  <section class="block">
+    <h3>From the comments</h3>
+    <ul class="examples"><li><q>Whatever you are going through, you are not alone.</q><cite>Dry Creek Wrangler School</cite></li>
+<li><q>So many here understand what it is to go through that, you&#x27;re not alone.</q><cite>Kati Morton</cite></li>
+<li><q>I hope you all get help and know you&#x27;re not alone and your problems matter.</q><cite>Kati Morton</cite></li>
+<li><q>WOW…the moment you realize you are not alone 😢❤</q><cite>Kati Morton</cite></li>
+<li><q>I just want you to know that you&#x27;re not alone, there&#x27;s a lot of us like this.</q><cite>Dry Creek Wrangler School</cite></li></ul>
+  </section>
+  <section class="block">
+    <h3>Common word groups</h3>
+    <ul class="collocs"><li>know you&#x27;re not alone</li><li>know that you are not alone</li><li>you are not alone in this</li><li>realize you are not alone</li></ul>
+  </section>
+  <section class="block note">
+    <h3>Usage note</h3>
+    <p>A reply formula: it usually answers another comment that describes a problem, and often comes with a heart emoji or a second reassurance like you matter. Both you are and you&#x27;re are common; capitals (NOT ALONE) add emphasis.</p>
+  </section>
+  <section class="block">
+    <h3>Translations</h3>
+    <dl class="trans"><div><dt>Arabic</dt><dd lang="ar" dir="rtl">لستَ وحدك</dd></div>
+<div><dt>German</dt><dd lang="de" dir="ltr">Du bist nicht allein</dd></div>
+<div><dt>French</dt><dd lang="fr" dir="ltr">Tu n&#x27;es pas seul(e)</dd></div>
+<div><dt>Spanish</dt><dd lang="es" dir="ltr">No estás solo/a</dd></div></dl>
+  </section>
+  
+</article>
+
+<article class="entry" id="healing" data-search="healing heal from healing journey healing process heal myself spiritual healing so healing laughter is healing الشفاء، التعافي die heilung la guérison la sanación, la curación struggle and recovery" data-domain="Struggle and Recovery">
+  <header class="entry-head">
+    <h2 class="hw">healing</h2>
+    <p class="pos">noun / verb (heal)</p>
+    <p class="freq" title="377.0 per million tokens">
+      <span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span></span>
+      <span>very frequent, 377 per million</span>
+    </p>
+  </header>
+  <p class="def">The slow process of recovering from emotional pain or trauma. Commenters describe it as a path or journey they are on.</p>
+  <section class="block">
+    <h3>From the comments</h3>
+    <ul class="examples"><li><q>Good luck on your healing journey x</q><cite>Kati Morton</cite></li>
+<li><q>It is a painful process to heal.</q><cite>Kati Morton</cite></li>
+<li><q>I am learning to begin my healing journey as well.❤</q><cite>Joe Dispenza</cite></li>
+<li><q>Defense mechanisms and working thru trauma and learning to laugh at our past is so healing.</q><cite>Jordan Peterson &amp; Matt Rife</cite></li>
+<li><q>Healing looks so beautiful on you 🤍</q><cite>Thewizardliz</cite></li></ul>
+  </section>
+  <section class="block">
+    <h3>Common word groups</h3>
+    <ul class="collocs"><li>heal from</li><li>healing journey</li><li>healing process</li><li>heal myself</li><li>spiritual healing</li><li>so healing</li><li>laughter is healing</li></ul>
+  </section>
+  <section class="block note">
+    <h3>Usage note</h3>
+    <p>Abstract and often spiritual, unlike the clinical anxiety. Heal from + a cause (trauma, abuse, a bad relationship) is the most frequent pattern; so healing works as an adjective meaning helpful for recovery.</p>
+  </section>
+  <section class="block">
+    <h3>Translations</h3>
+    <dl class="trans"><div><dt>Arabic</dt><dd lang="ar" dir="rtl">الشفاء، التعافي</dd></div>
+<div><dt>German</dt><dd lang="de" dir="ltr">die Heilung</dd></div>
+<div><dt>French</dt><dd lang="fr" dir="ltr">la guérison</dd></div>
+<div><dt>Spanish</dt><dd lang="es" dir="ltr">la sanación, la curación</dd></div></dl>
+  </section>
+  <blockquote class="quote"><p>The wound is the place where the Light enters you.</p><footer>commonly attributed to Rumi</footer></blockquote>
+</article>
+
+<article class="entry" id="self-worth" data-search="self-worth my self-worth low self-worth sense of self-worth own self-worth separate your self-worth self-esteem and self-worth تقدير الذات der selbstwert l&#x27;estime de soi, la valeur personnelle la autoestima, el valor propio struggle and recovery" data-domain="Struggle and Recovery">
+  <header class="entry-head">
+    <h2 class="hw">self-worth</h2>
+    <p class="pos">noun</p>
+    <p class="freq" title="29.2 per million tokens">
+      <span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+      <span>less common, 29.2 per million</span>
+    </p>
+  </header>
+  <p class="def">Your sense of your own value as a person. In the comments it is something you build, discover or separate from what others think.</p>
+  <section class="block">
+    <h3>From the comments</h3>
+    <ul class="examples"><li><q>Understanding this can help you separate your self-worth from others&#x27; actions or words .</q><cite>Frederik Imbo (TEDx)</cite></li>
+<li><q>When individuals take ownership of their decisions and actions, they develop a stronger sense of self-worth.</q><cite>Dr. Paul Conti (Huberman Lab)</cite></li>
+<li><q>So here I am, going into my mid-20s and only just now starting to discover my self-worth.</q><cite>Kati Morton</cite></li>
+<li><q>Once a person improves their self esteem and self worth, life gets better.</q><cite>Kati Morton</cite></li>
+<li><q>Can you please talk about low self worth and how to improve it pleaseee.</q><cite>Kati Morton</cite></li></ul>
+  </section>
+  <section class="block">
+    <h3>Common word groups</h3>
+    <ul class="collocs"><li>my self-worth</li><li>low self-worth</li><li>sense of self-worth</li><li>own self-worth</li><li>separate your self-worth</li><li>self-esteem and self-worth</li></ul>
+  </section>
+  <section class="block note">
+    <h3>Usage note</h3>
+    <p>Spelled self-worth and self worth about equally. Often paired with self-esteem, self-love or self-respect. Many raw hits are spam promoting a self-worth book; they are excluded here.</p>
+  </section>
+  <section class="block">
+    <h3>Translations</h3>
+    <dl class="trans"><div><dt>Arabic</dt><dd lang="ar" dir="rtl">تقدير الذات</dd></div>
+<div><dt>German</dt><dd lang="de" dir="ltr">der Selbstwert</dd></div>
+<div><dt>French</dt><dd lang="fr" dir="ltr">l&#x27;estime de soi, la valeur personnelle</dd></div>
+<div><dt>Spanish</dt><dd lang="es" dir="ltr">la autoestima, el valor propio</dd></div></dl>
+  </section>
+  <blockquote class="quote"><p>You alone are enough. You have nothing to prove to anybody.</p><footer>commonly attributed to Maya Angelou</footer></blockquote>
+</article>
+
+<article class="entry" id="mindfulness" data-search="mindfulness mindfulness meditation mindfulness practice practice mindfulness be mindful mindful of mindful meditation اليقظة الذهنية die achtsamkeit la pleine conscience la atención plena advice and reflection" data-domain="Advice and Reflection">
+  <header class="entry-head">
+    <h2 class="hw">mindfulness</h2>
+    <p class="pos">noun / adjective (mindful)</p>
+    <p class="freq" title="50.1 per million tokens">
+      <span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot on"></span><span class="dot on"></span><span class="dot"></span><span class="dot"></span></span>
+      <span>common, 50.1 per million</span>
+    </p>
+  </header>
+  <p class="def">Paying calm attention to what you are thinking and feeling in the present moment, without judging it. Often discussed as a meditation practice.</p>
+  <section class="block">
+    <h3>From the comments</h3>
+    <ul class="examples"><li><q>Just like mindfulness meditation, you dont push the thought away you just notice it and allow without judgement.</q><cite>Jonathan Bricker (TEDxRainier)</cite></li>
+<li><q>So right now make a mindful decision to just take one minute at a time.</q><cite>Kati Morton</cite></li>
+<li><q>This truly has reinforced my confidence to practice being mindful.</q><cite>Frederik Imbo (TEDx)</cite></li>
+<li><q>Mindfulness, meditations usually is my antidote but too exhausting.</q><cite>Kati Morton</cite></li>
+<li><q>This talk can be summed up in one word - Mindfulness.</q><cite>Jonathan Bricker (TEDxRainier)</cite></li></ul>
+  </section>
+  <section class="block">
+    <h3>Common word groups</h3>
+    <ul class="collocs"><li>mindfulness meditation</li><li>mindfulness practice</li><li>practice mindfulness</li><li>be mindful</li><li>mindful of</li><li>mindful meditation</li></ul>
+  </section>
+  <section class="block note">
+    <h3>Usage note</h3>
+    <p>Mostly comes up when commenters compare a talk&#x27;s advice to mindfulness, sometimes critically (a repackaging of mindfulness). Be mindful of + noun means pay attention to.</p>
+  </section>
+  <section class="block">
+    <h3>Translations</h3>
+    <dl class="trans"><div><dt>Arabic</dt><dd lang="ar" dir="rtl">اليقظة الذهنية</dd></div>
+<div><dt>German</dt><dd lang="de" dir="ltr">die Achtsamkeit</dd></div>
+<div><dt>French</dt><dd lang="fr" dir="ltr">la pleine conscience</dd></div>
+<div><dt>Spanish</dt><dd lang="es" dir="ltr">la atención plena</dd></div></dl>
+  </section>
+  <blockquote class="quote"><p>Wherever you go, there you are.</p><footer>Jon Kabat-Zinn</footer></blockquote>
+</article>
+
+<article class="entry" id="self-motivation" data-search="self-motivation discipline and self-motivation self-motivation technique idea of self-motivation enduring self-motivation التحفيز الذاتي die selbstmotivation l&#x27;automotivation la automotivación advice and reflection" data-domain="Advice and Reflection">
+  <header class="entry-head">
+    <h2 class="hw">self-motivation</h2>
+    <p class="pos">noun</p>
+    <p class="freq" title="9.6 per million tokens">
+      <span class="dots" aria-hidden="true"><span class="dot on"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span></span>
+      <span>rare, 9.6 per million</span>
+    </p>
+  </header>
+  <p class="def">The drive to do something because you want to, without needing pressure or rewards from other people.</p>
+  <section class="block">
+    <h3>From the comments</h3>
+    <ul class="examples"><li><q>Self-Motivation – you are the only influence that is guaranteed in your life.</q><cite>GrindBuddy</cite></li>
+<li><q>I love the idea of self-motivation discussed here!</q><cite>Frederik Imbo (TEDx)</cite></li>
+<li><q>In your experience, what has been the most powerful self-motivation technique?</q><cite>Frederik Imbo (TEDx)</cite></li>
+<li><q>Go to work (Take action): This step emphasizes the importance of discipline and self-motivation.</q><cite>GrindBuddy</cite></li></ul>
+  </section>
+  <section class="block">
+    <h3>Common word groups</h3>
+    <ul class="collocs"><li>discipline and self-motivation</li><li>self-motivation technique</li><li>idea of self-motivation</li><li>enduring self-motivation</li></ul>
+  </section>
+  <section class="block note">
+    <h3>Usage note</h3>
+    <p>Rare in running text but a keyword of the corpus. It appears in summaries and lists of a talk&#x27;s lessons, next to discipline and self-education, more than in personal stories.</p>
+  </section>
+  <section class="block">
+    <h3>Translations</h3>
+    <dl class="trans"><div><dt>Arabic</dt><dd lang="ar" dir="rtl">التحفيز الذاتي</dd></div>
+<div><dt>German</dt><dd lang="de" dir="ltr">die Selbstmotivation</dd></div>
+<div><dt>French</dt><dd lang="fr" dir="ltr">l&#x27;automotivation</dd></div>
+<div><dt>Spanish</dt><dd lang="es" dir="ltr">la automotivación</dd></div></dl>
+  </section>
+  <blockquote class="quote"><p>Motivation is what gets you started. Habit is what keeps you going.</p><footer>commonly attributed to Jim Rohn</footer></blockquote>
+</article>
+    <p class="empty" id="empty" hidden></p>
+  </main>
+</div>
+
+<footer class="about">
+  <p>Built from 71,932 cleaned English comments from 13 YouTube videos on mental health and self-improvement (about 2.2 million tokens). Examples are quoted as written, including spelling and emojis; the name under each example is the video it was posted under. Frequencies count all word forms.</p>
+  <p>By Adelya Aibolova, Souhaila Derbal and Salah Eddine Nacer Benkhemis &middot; Computational Linguistics 2025/26, EMLex. Data, code and report: <a href="https://github.com/Adelyaaibolova/mindwords-corpus">https://github.com/Adelyaaibolova/mindwords-corpus</a>.</p>
+</footer>
+
+<script>
+(function () {
+  var input = document.getElementById("q");
+  var entries = Array.prototype.slice.call(document.querySelectorAll(".entry"));
+  var links = Array.prototype.slice.call(document.querySelectorAll("nav.index a"));
+  var count = document.getElementById("count");
+  var empty = document.getElementById("empty");
+  var total = count.textContent;
+  input.addEventListener("input", function () {
+    var q = input.value.trim().toLowerCase();
+    var shown = 0;
+    entries.forEach(function (el) {
+      var hit = !q || el.dataset.search.indexOf(q) !== -1;
+      el.hidden = !hit;
+      if (hit) shown++;
+      links.forEach(function (a) {
+        if (a.getAttribute("href") === "#" + el.id) a.classList.toggle("dim", !hit);
+      });
+    });
+    count.textContent = q ? shown + (shown === 1 ? " entry" : " entries") + " match \u201c" + input.value.trim() + "\u201d" : total;
+    empty.hidden = shown !== 0;
+    empty.textContent = shown ? "" : "No entry matches \u201c" + input.value.trim() + "\u201d. Try a headword from the list, or a translation such as Angst or empatía.";
+  });
+})();
+</script>
+</body>
+</html>

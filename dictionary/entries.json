@@ -1,0 +1,550 @@
+{
+  "meta": {
+    "title": "MindWords",
+    "subtitle": "A corpus-based dictionary of mental health discourse on YouTube",
+    "authors": [
+      "Adelya Aibolova",
+      "Souhaila Derbal",
+      "Salah Eddine Nacer Benkhemis"
+    ],
+    "course": "Computational Linguistics 2025/26, EMLex",
+    "corpus": "71,932 cleaned English comments from 13 YouTube videos on mental health and self-improvement (about 2.2 million tokens)",
+    "repo": "https://github.com/Adelyaaibolova/mindwords-corpus"
+  },
+  "domains": [
+    "Emotional States",
+    "Self-Improvement",
+    "Support and Encouragement",
+    "Struggle and Recovery",
+    "Advice and Reflection"
+  ],
+  "entries": [
+    {
+      "id": "anxiety",
+      "headword": "anxiety",
+      "pos": "noun",
+      "domain": "Emotional States",
+      "per_million": 425.7,
+      "definition": "A strong feeling of worry or nervousness about something that is happening or might happen. In the comments it is mostly spoken of as a named condition that people have, are diagnosed with, or try to reduce.",
+      "examples": [
+        {
+          "text": "Every time I experience anxiety or panic attack I come back to this video.",
+          "source": "COWBOY.csv"
+        },
+        {
+          "text": "I went to a therapist and she told me I had light depression and moderate to high anxiety.",
+          "source": "kati_2.csv"
+        },
+        {
+          "text": "I've been dealing with serious anxiety for a while.",
+          "source": "out__15_.csv"
+        },
+        {
+          "text": "Social anxiety, depression are my diagnosis basically.",
+          "source": "KATI_3.csv"
+        },
+        {
+          "text": "Then I started on the anxiety meds which only made my anxiety 10 times worse.",
+          "source": "kati_2.csv"
+        }
+      ],
+      "collocations": [
+        "social anxiety",
+        "anxiety and depression",
+        "anxiety disorder",
+        "anxiety attack",
+        "severe anxiety",
+        "generalized anxiety",
+        "constant anxiety",
+        "anxiety meds"
+      ],
+      "note": "Very often the head of a noun compound: social, separation, job, death anxiety, and the creative coinage trickle-down anxiety. It is usually listed together with depression. A counter-narrative also appears in the corpus: anxiety is not an enemy, it is a signal.",
+      "translations": {
+        "ar": "قلق",
+        "de": "die Angst, die Ängstlichkeit",
+        "fr": "l'anxiété",
+        "es": "la ansiedad"
+      },
+      "quote": {
+        "text": "You don't have to control your thoughts. You just have to stop letting them control you.",
+        "by": "commonly attributed to Dan Millman"
+      }
+    },
+    {
+      "id": "overthinking",
+      "headword": "overthinking",
+      "pos": "noun / verb (overthink)",
+      "domain": "Emotional States",
+      "per_million": 45.6,
+      "definition": "Thinking about something for too long or too much, so that it causes worry instead of helping you decide. Commenters use it to describe a habit or a state they are stuck in.",
+      "examples": [
+        {
+          "text": "I overthink everything I’ve said ever & I relive conversations & get wound up, every single day.",
+          "source": "kati_2.csv"
+        },
+        {
+          "text": "I won’t give my energy to overthinking anymore.",
+          "source": "liz_csv.csv"
+        },
+        {
+          "text": "It's the overthinking that creates the tug-of-war.",
+          "source": "Jonathan_Bricke.csv"
+        },
+        {
+          "text": "I'm always overthinking and analysing everything.",
+          "source": "KATI_3.csv"
+        },
+        {
+          "text": "And she will just keep telling me to be positive and stop overthinking.",
+          "source": "kati_2.csv"
+        }
+      ],
+      "collocations": [
+        "stop overthinking",
+        "always overthink",
+        "overthink everything",
+        "overthinking about",
+        "overthinking loop",
+        "stop overthinking it"
+      ],
+      "note": "Typically used with always or with an object like everything. The imperative stop overthinking is often quoted as unhelpful advice from others. The informal spelling abt (about) is common after it.",
+      "translations": {
+        "ar": "الإفراط في التفكير",
+        "de": "das Grübeln, das Zerdenken",
+        "fr": "la rumination, le fait de trop réfléchir",
+        "es": "pensar demasiado, la rumiación"
+      },
+      "quote": {
+        "text": "We suffer more often in imagination than in reality.",
+        "by": "Seneca"
+      }
+    },
+    {
+      "id": "discipline",
+      "headword": "discipline",
+      "pos": "noun",
+      "domain": "Self-Improvement",
+      "per_million": 82.5,
+      "definition": "The ability to control your own behaviour and keep doing what you planned, built up through regular practice. In this corpus it almost always means self-discipline, not rules imposed by others.",
+      "examples": [
+        {
+          "text": "Discipline is choosing between what you want now and what you want most.",
+          "source": "Jonathan_Bricke.csv"
+        },
+        {
+          "text": "Start with the little disciplines because those will lead to the big ones.",
+          "source": "grindbuddy.csv"
+        },
+        {
+          "text": "Discipline isn't a sacrifice, it is an enrichment.",
+          "source": "Jonathan_Bricke.csv"
+        },
+        {
+          "text": "Please first have the discipline to do what you planned.",
+          "source": "out__15_.csv"
+        },
+        {
+          "text": "I have lacked self discipline for a very long time.",
+          "source": "Jonathan_Bricke.csv"
+        }
+      ],
+      "collocations": [
+        "self-discipline",
+        "little discipline",
+        "lack of discipline",
+        "build discipline",
+        "practice and discipline",
+        "discipline and training",
+        "be disciplined"
+      ],
+      "note": "Strongly metaphorical: discipline is a gateway, an engine, freedom, and a discipline muscle you train. In general web English (English Web 2021) the word is institutional instead: academic or strict discipline that is imposed or enforced.",
+      "translations": {
+        "ar": "الانضباط",
+        "de": "die Disziplin",
+        "fr": "la discipline",
+        "es": "la disciplina"
+      },
+      "quote": {
+        "text": "Discipline is the bridge between goals and accomplishment.",
+        "by": "commonly attributed to Jim Rohn"
+      }
+    },
+    {
+      "id": "mindset",
+      "headword": "mindset",
+      "pos": "noun",
+      "domain": "Self-Improvement",
+      "per_million": 131.3,
+      "definition": "A person's usual way of thinking and the attitudes that come with it. Commenters treat it as something you can change, fix or carry into a situation.",
+      "examples": [
+        {
+          "text": "It starts with changing your mindset.",
+          "source": "kati_2.csv"
+        },
+        {
+          "text": "I never in my life had the victim mindset.",
+          "source": "joe.csv"
+        },
+        {
+          "text": "That helps you get rid of the \"I have to be right\" mindset",
+          "source": "out__15_.csv"
+        },
+        {
+          "text": "You’re no burden, and I know that’s a hard mindset to come out of but you’re not.",
+          "source": "KATI_3.csv"
+        },
+        {
+          "text": "Yet here I am remaining in the same mindset as I was 😑",
+          "source": "kati_2.csv"
+        }
+      ],
+      "collocations": [
+        "change your mindset",
+        "victim mindset",
+        "positive mindset",
+        "right mindset",
+        "growth mindset",
+        "mindset shift",
+        "fix my mindset"
+      ],
+      "note": "Often pre-modified by a type: victim, positive, growth, or a quoted phrase like the \"I have to be right\" mindset. Close neighbours are attitude, mentality and way of thinking. Watch out: many hits in the GrindBuddy comments come from spam advertising a money-mindset book.",
+      "translations": {
+        "ar": "العقلية، طريقة التفكير",
+        "de": "die Denkweise, die Einstellung, das Mindset",
+        "fr": "l'état d'esprit",
+        "es": "la mentalidad"
+      },
+      "quote": {
+        "text": "Whether you think you can, or you think you can't — you're right.",
+        "by": "commonly attributed to Henry Ford"
+      }
+    },
+    {
+      "id": "self-education",
+      "headword": "self-education",
+      "pos": "noun",
+      "domain": "Self-Improvement",
+      "per_million": 10.5,
+      "definition": "Learning things by yourself, outside school or formal training, usually by reading and practising. In the comments it is praised as a key to success.",
+      "examples": [
+        {
+          "text": "Rohn's point on self-education really hits home-so much power in taking control of your learning!",
+          "source": "grindbuddy.csv"
+        },
+        {
+          "text": "Formal education will make you a living; self-education will make you a fortune.",
+          "source": "grindbuddy.csv"
+        },
+        {
+          "text": "I love how Jim emphasizes self-education.",
+          "source": "grindbuddy.csv"
+        },
+        {
+          "text": "Self-educated is the most important thing we must learn..",
+          "source": "grindbuddy.csv"
+        }
+      ],
+      "collocations": [
+        "self-education is key",
+        "emphasizes self-education",
+        "become self-educated"
+      ],
+      "note": "Rare and concentrated in one video (GrindBuddy, quoting Jim Rohn), so the examples come from a single source. The adjective self-educated is as frequent as the noun. Part of a productive family with self-discipline, self-worth and self-motivation.",
+      "translations": {
+        "ar": "التعلّم الذاتي",
+        "de": "die Selbstbildung",
+        "fr": "l'autoformation",
+        "es": "la autoformación, la autoeducación"
+      },
+      "quote": {
+        "text": "Formal education will make you a living; self-education will make you a fortune.",
+        "by": "commonly attributed to Jim Rohn"
+      }
+    },
+    {
+      "id": "empathy",
+      "headword": "empathy",
+      "pos": "noun",
+      "domain": "Support and Encouragement",
+      "per_million": 297.7,
+      "definition": "The ability to understand and share another person's feelings. In this corpus it is also turned inwards: giving yourself empathy means treating yourself with understanding.",
+      "examples": [
+        {
+          "text": "It's about me, my insecurities - give yourself some empathy.",
+          "source": "out__15_.csv"
+        },
+        {
+          "text": "I have found that the older I get the more empathy I have.",
+          "source": "kati.csv"
+        },
+        {
+          "text": "My POV today: I have big empathy for the child my parent once was.",
+          "source": "kati.csv"
+        },
+        {
+          "text": "Empathy is not feeling what others feel because you can never know without listening.",
+          "source": "kati.csv"
+        },
+        {
+          "text": "I also have tons of empathy and compassion for others.",
+          "source": "kati.csv"
+        }
+      ],
+      "collocations": [
+        "give yourself empathy",
+        "lack empathy",
+        "no empathy",
+        "feel empathy",
+        "show empathy",
+        "cognitive empathy",
+        "emotional empathy",
+        "empathy towards"
+      ],
+      "note": "Two distinct uses. Self-directed: give yourself empathy, close to self-compassion (from the TEDx talk on not taking things personally). Clinical: in the narcissism video it is discussed as something people lack, fake or have in cognitive and emotional forms. Most hits come from that one video.",
+      "translations": {
+        "ar": "التعاطف",
+        "de": "die Empathie, das Einfühlungsvermögen",
+        "fr": "l'empathie",
+        "es": "la empatía"
+      },
+      "quote": {
+        "text": "Be kind, for everyone you meet is fighting a hard battle.",
+        "by": "commonly attributed to Ian Maclaren"
+      }
+    },
+    {
+      "id": "you-are-not-alone",
+      "headword": "you are not alone",
+      "pos": "phrase",
+      "domain": "Support and Encouragement",
+      "per_million": 48.3,
+      "definition": "Said to someone who is struggling, to tell them that other people feel the same and understand them.",
+      "examples": [
+        {
+          "text": "Whatever you are going through, you are not alone.",
+          "source": "COWBOY.csv"
+        },
+        {
+          "text": "So many here understand what it is to go through that, you're not alone.",
+          "source": "KATI_3.csv"
+        },
+        {
+          "text": "I hope you all get help and know you're not alone and your problems matter.",
+          "source": "KATI_3.csv"
+        },
+        {
+          "text": "WOW…the moment you realize you are not alone 😢❤",
+          "source": "KATI_3.csv"
+        },
+        {
+          "text": "I just want you to know that you're not alone, there's a lot of us like this.",
+          "source": "COWBOY.csv"
+        }
+      ],
+      "collocations": [
+        "know you're not alone",
+        "know that you are not alone",
+        "you are not alone in this",
+        "realize you are not alone"
+      ],
+      "note": "A reply formula: it usually answers another comment that describes a problem, and often comes with a heart emoji or a second reassurance like you matter. Both you are and you're are common; capitals (NOT ALONE) add emphasis.",
+      "translations": {
+        "ar": "لستَ وحدك",
+        "de": "Du bist nicht allein",
+        "fr": "Tu n'es pas seul(e)",
+        "es": "No estás solo/a"
+      }
+    },
+    {
+      "id": "healing",
+      "headword": "healing",
+      "pos": "noun / verb (heal)",
+      "domain": "Struggle and Recovery",
+      "per_million": 377.0,
+      "definition": "The slow process of recovering from emotional pain or trauma. Commenters describe it as a path or journey they are on.",
+      "examples": [
+        {
+          "text": "Good luck on your healing journey x",
+          "source": "KATI_3.csv"
+        },
+        {
+          "text": "It is a painful process to heal.",
+          "source": "KATI_3.csv"
+        },
+        {
+          "text": "I am learning to begin my healing journey as well.❤",
+          "source": "joe.csv"
+        },
+        {
+          "text": "Defense mechanisms and working thru trauma and learning to laugh at our past is so healing.",
+          "source": "jordan.csv"
+        },
+        {
+          "text": "Healing looks so beautiful on you 🤍",
+          "source": "liz_csv.csv"
+        }
+      ],
+      "collocations": [
+        "heal from",
+        "healing journey",
+        "healing process",
+        "heal myself",
+        "spiritual healing",
+        "so healing",
+        "laughter is healing"
+      ],
+      "note": "Abstract and often spiritual, unlike the clinical anxiety. Heal from + a cause (trauma, abuse, a bad relationship) is the most frequent pattern; so healing works as an adjective meaning helpful for recovery.",
+      "translations": {
+        "ar": "الشفاء، التعافي",
+        "de": "die Heilung",
+        "fr": "la guérison",
+        "es": "la sanación, la curación"
+      },
+      "quote": {
+        "text": "The wound is the place where the Light enters you.",
+        "by": "commonly attributed to Rumi"
+      }
+    },
+    {
+      "id": "self-worth",
+      "headword": "self-worth",
+      "pos": "noun",
+      "domain": "Struggle and Recovery",
+      "per_million": 29.2,
+      "definition": "Your sense of your own value as a person. In the comments it is something you build, discover or separate from what others think.",
+      "examples": [
+        {
+          "text": "Understanding this can help you separate your self-worth from others' actions or words .",
+          "source": "out__15_.csv"
+        },
+        {
+          "text": "When individuals take ownership of their decisions and actions, they develop a stronger sense of self-worth.",
+          "source": "dr_paul.csv"
+        },
+        {
+          "text": "So here I am, going into my mid-20s and only just now starting to discover my self-worth.",
+          "source": "KATI_3.csv"
+        },
+        {
+          "text": "Once a person improves their self esteem and self worth, life gets better.",
+          "source": "kati_2.csv"
+        },
+        {
+          "text": "Can you please talk about low self worth and how to improve it pleaseee.",
+          "source": "KATI_3.csv"
+        }
+      ],
+      "collocations": [
+        "my self-worth",
+        "low self-worth",
+        "sense of self-worth",
+        "own self-worth",
+        "separate your self-worth",
+        "self-esteem and self-worth"
+      ],
+      "note": "Spelled self-worth and self worth about equally. Often paired with self-esteem, self-love or self-respect. Many raw hits are spam promoting a self-worth book; they are excluded here.",
+      "translations": {
+        "ar": "تقدير الذات",
+        "de": "der Selbstwert",
+        "fr": "l'estime de soi, la valeur personnelle",
+        "es": "la autoestima, el valor propio"
+      },
+      "quote": {
+        "text": "You alone are enough. You have nothing to prove to anybody.",
+        "by": "commonly attributed to Maya Angelou"
+      }
+    },
+    {
+      "id": "mindfulness",
+      "headword": "mindfulness",
+      "pos": "noun / adjective (mindful)",
+      "domain": "Advice and Reflection",
+      "per_million": 50.1,
+      "definition": "Paying calm attention to what you are thinking and feeling in the present moment, without judging it. Often discussed as a meditation practice.",
+      "examples": [
+        {
+          "text": "Just like mindfulness meditation, you dont push the thought away you just notice it and allow without judgement.",
+          "source": "Jonathan_Bricke.csv"
+        },
+        {
+          "text": "So right now make a mindful decision to just take one minute at a time.",
+          "source": "kati_2.csv"
+        },
+        {
+          "text": "This truly has reinforced my confidence to practice being mindful.",
+          "source": "out__15_.csv"
+        },
+        {
+          "text": "Mindfulness, meditations usually is my antidote but too exhausting.",
+          "source": "kati_2.csv"
+        },
+        {
+          "text": "This talk can be summed up in one word - Mindfulness.",
+          "source": "Jonathan_Bricke.csv"
+        }
+      ],
+      "collocations": [
+        "mindfulness meditation",
+        "mindfulness practice",
+        "practice mindfulness",
+        "be mindful",
+        "mindful of",
+        "mindful meditation"
+      ],
+      "note": "Mostly comes up when commenters compare a talk's advice to mindfulness, sometimes critically (a repackaging of mindfulness). Be mindful of + noun means pay attention to.",
+      "translations": {
+        "ar": "اليقظة الذهنية",
+        "de": "die Achtsamkeit",
+        "fr": "la pleine conscience",
+        "es": "la atención plena"
+      },
+      "quote": {
+        "text": "Wherever you go, there you are.",
+        "by": "Jon Kabat-Zinn"
+      }
+    },
+    {
+      "id": "self-motivation",
+      "headword": "self-motivation",
+      "pos": "noun",
+      "domain": "Advice and Reflection",
+      "per_million": 9.6,
+      "definition": "The drive to do something because you want to, without needing pressure or rewards from other people.",
+      "examples": [
+        {
+          "text": "Self-Motivation – you are the only influence that is guaranteed in your life.",
+          "source": "grindbuddy.csv"
+        },
+        {
+          "text": "I love the idea of self-motivation discussed here!",
+          "source": "out__15_.csv"
+        },
+        {
+          "text": "In your experience, what has been the most powerful self-motivation technique?",
+          "source": "out__15_.csv"
+        },
+        {
+          "text": "Go to work (Take action): This step emphasizes the importance of discipline and self-motivation.",
+          "source": "grindbuddy.csv"
+        }
+      ],
+      "collocations": [
+        "discipline and self-motivation",
+        "self-motivation technique",
+        "idea of self-motivation",
+        "enduring self-motivation"
+      ],
+      "note": "Rare in running text but a keyword of the corpus. It appears in summaries and lists of a talk's lessons, next to discipline and self-education, more than in personal stories.",
+      "translations": {
+        "ar": "التحفيز الذاتي",
+        "de": "die Selbstmotivation",
+        "fr": "l'automotivation",
+        "es": "la automotivación"
+      },
+      "quote": {
+        "text": "Motivation is what gets you started. Habit is what keeps you going.",
+        "by": "commonly attributed to Jim Rohn"
+      }
+    }
+  ]
+}

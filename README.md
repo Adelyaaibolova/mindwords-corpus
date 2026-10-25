@@ -7,6 +7,8 @@
 
 A specialised English corpus built from the comment sections of 14 YouTube videos on mental health and self-improvement, and a learner's dictionary derived from it. Course project, *Computational Linguistics 2025/26* (EMLex), by **Adelya Aibolova, Souhaila Derbal and Salah Eddine Nacer Benkhemis**.
 
+**📖 Open the dictionary: [adelyaaibolova.github.io/mindwords-corpus](https://adelyaaibolova.github.io/mindwords-corpus/)**
+
 > **Research question.** Which lexical units characterise mental-health and self-improvement discourse on YouTube, and how does a lay audience actually use them in spontaneous online writing?
 
 ## Highlights
@@ -28,7 +30,19 @@ A specialised English corpus built from the comment sections of 14 YouTube video
 - **Productive *self-*.** *self-education, self-discipline, self-worth, self-motivation, self-hate* — all keyword-level, all tied to personal responsibility.
 - **Comment sections are multilingual.** Arabic, Portuguese, Dutch and Spanish tokens reached the keyword list even after filtering.
 
-The full write-up (German) is in [`report/Forschungsbericht_MindWords_de.md`](report/Forschungsbericht_MindWords_de.md); sample entries are in [`docs/dictionary_sample_entries.md`](docs/dictionary_sample_entries.md).
+The full write-up (German) is in [`report/Forschungsbericht_MindWords_de.md`](report/Forschungsbericht_MindWords_de.md).
+
+## The dictionary
+
+All 11 entries — definition, four or five authentic examples with the video they come from, common word groups, a usage note, translations into Arabic, German, French and Spanish, and most with a quote — are on the [dictionary page](https://adelyaaibolova.github.io/mindwords-corpus/), searchable by headword, word group or translation.
+
+The page is generated from [`dictionary/entries.json`](dictionary/entries.json):
+
+```bash
+python scripts/build_dictionary.py   # -> docs/index.html
+```
+
+Every example was checked to occur verbatim in the cleaned corpus, and every word group to be attested in it. Examples from spam comments (e.g. ads for self-help books mentioning *self-worth* or *mindset*) were excluded.
 
 ## Corpus
 
@@ -118,7 +132,10 @@ mindwords-corpus/
 │   ├── videos.csv              # the 14 source videos
 │   ├── raw/                    # local only, git-ignored
 │   └── derived/                # shareable statistics + figures
+├── dictionary/
+│   └── entries.json            # the 11 dictionary entries (source of the page)
 ├── docs/
+│   ├── index.html              # dictionary page, served by GitHub Pages
 │   └── dictionary_sample_entries.md
 ├── report/
 │   └── Forschungsbericht_MindWords_de.md
@@ -128,6 +145,7 @@ mindwords-corpus/
 │   ├── clean_comments.py       # cleaning pipeline with step log
 │   ├── textclean.py            # cleaning functions
 │   ├── corpus_stats.py         # statistics + figures
+│   ├── build_dictionary.py     # entries.json -> docs/index.html
 │   └── export_sketchengine.py  # Sketch Engine / CQPweb text export
 ├── tests/
 │   └── test_textclean.py
