@@ -168,10 +168,9 @@ mindwords-corpus/
 
 ## Authors
 
-- Adelya Aibolova — [@Adelyaaibolova](https://github.com/Adelyaaibolova)
+- Adelya Aibolova — [@Adelyaaibolova](https://github.com/Adelyaaibolova) · [LinkedIn](https://www.linkedin.com/in/adelya-aibolova)
 - Souhaila Derbal
 - Salah Eddine Nacer Benkhemis
-  
 
 ## License
 
